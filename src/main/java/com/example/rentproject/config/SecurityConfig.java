@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/",
                         "/sign-in",
                         "/sign-up",
-                        "/sign-up/*",
+                        "/sign-up",
                         "/contact",
                         "/activate/*",
                         "/resources/**",
@@ -55,7 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/js/**",
                         "/images/**",
                         "/fonts/**",
-                        "/index"
+                        "/index",
+                        "/owner"
                 )
                 .permitAll()
                 .anyRequest().authenticated();

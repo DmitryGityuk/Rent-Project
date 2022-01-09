@@ -74,4 +74,19 @@ public class UserService implements UserDetailsService {
                 emailTo);
         mailSender.sendNewsLetter(emailTo, "Новости", message);
     }
+
+    public boolean regOwner(User user) {
+        User appUserFromDb = userRepo.findUserByUserEmail(user.getUserEmail());
+        if (appUserFromDb != null) {
+            return false;
+        }
+        user.setPassword(EncryptedPasswordUtils.encryptedPassword(user.getPassword()));
+        user.setAccountIsActivated(false);
+        user.setAccountNonLocked(true);
+        user.setRoles(Collections.singleton(Role.OWNER));
+        user.setActivationCode(UUID.randomUUID().toString());
+        userRepo.save(user);
+        sendActivationCode(user);
+        return true;
+    }
 }
