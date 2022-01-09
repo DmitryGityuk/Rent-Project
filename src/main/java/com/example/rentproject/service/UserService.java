@@ -89,4 +89,27 @@ public class UserService implements UserDetailsService {
         sendActivationCode(user);
         return true;
     }
+
+    public void updateUser(Long id, User user) {
+        User userFromDB = userRepo.findById(id).get();
+        String email = user.getUserEmail();
+        boolean isEmailChanged = (userFromDB.getUserEmail() != null && !userFromDB.getUserEmail().equals(email))
+                || email != null && !email.equals(userFromDB.getUserEmail());
+        if (isEmailChanged){
+            user.setUserEmail(email);
+            if (!StringUtils.isEmpty(email)){
+                user.setActivationCode(UUID.randomUUID().toString());
+            }
+        }
+        user.setPassword(EncryptedPasswordUtils.encryptedPassword(user.getPassword()));
+        user.setRoles(Collections.singleton(Role.USER));
+        user.setUsername(user.getUsername());
+        user.setFirstName(user.getFirstName());
+        user.setSecondName(user.getSecondName());
+        userRepo.save(user);
+
+        if (isEmailChanged) {
+            sendActivationCode(user);
+        }
+    }
 }
