@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>SomeHomes</title>
+    <!-- Stylesheets -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
+    <!-- Responsive File -->
+    <link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+    <!-- Responsive Settings -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script th:src="@{/js/respond.js}"></script><![endif]-->
+</head>
+
+<body>
+
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="icon"></div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header header-style-one">
+
+        <!-- Header Upper -->
+        <div class="header-upper">
+            <div class="inner-container clearfix">
+                <!--Logo-->
+                <div class="logo-box">
+                    <div class="logo"><a th:href="@{/}" title="SomeHomes-logo"><img src="images/logo.png"
+                                                                                       alt="SomeHomes"
+                                                                                       title="SomeHomes-logo"></a></div>
+                </div>
+                <div class="nav-outer clearfix">
+                    <!--Mobile Navigation Toggler-->
+                    <div class="mobile-nav-toggler"><span class="icon flaticon-menu-2"></span><span
+                            class="txt">Menu</span></div>
+
+                    <!-- Main Menu -->
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation clearfix">
+                                <li><a rel="noopener noreferrer" target="_blank" href="https://www.aviasales.ru">Авиабилеты</a>
+                                </li>
+                                <li><a rel="noopener noreferrer" target="_blank" href="https://bookingcar.eu/">Аренда
+                                    автомобилей</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="other-links clearfix" sec:authorize="!isAuthenticated()">
+                    <div class="info">
+                        <ul class="clearfix">
+                            <li><a th:href="@{/sign-in}"><span class="icon flaticon-padlock"></span><span class="txt">Войти</span></a>
+                            </li>
+                            <li><a th:href="@{/sign-up}"><span class="icon flaticon-user-1"></span><span class="txt">Зарегистрироваться</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="other-links clearfix" sec:authorize="isAuthenticated()">
+                    <div class="info">
+                        <ul class="clearfix">
+                            <li><a th:href="@{/profile}"><span class="icon flaticon-user"></span><span class="txt">Ваш акккаунт</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--End Header Upper-->
+
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="close-btn"><span class="icon flaticon-targeting-cross"></span></div>
+            <div class="menu-backdrop"></div>
+            <div class="nav-logo"><a th:href="@{/}"><img src="images/nav-logo.png" alt="" title=""></a></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+            </nav>
+            <div class="nav-bottom">
+                <div class="copyright">SomeHomes &copy; 2021 All Right Reserved</div>
+                <!--Social Links-->
+            </div>
+        </div><!-- End Mobile Menu -->
+
+    </header>
+    <!-- End Main Header -->
+
+
+    <!-- Banner Section -->
+    <section class="banner-section banner-one">
+        <div class="banner-bottom-pattern"></div>
+
+        <div class="banner-carousel owl-theme owl-carousel">
+            <!-- Slide Item -->
+            <div class="slide-item">
+                <div class="image-layer" style="background-image: url(images/main-slider/Venice.jpg);"></div>
+                <div class="auto-container">
+                    <div class="content-box">
+                        <div class="content">
+                            <div class="inner">
+                                <h1>Найди своё <br>Идеальное жильё</h1>
+                                <div class="text">Путешествуте с любовью</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide Item -->
+            <div class="slide-item">
+                <div class="image-layer" style="background-image: url(images/main-slider/tokyo.jpg);"></div>
+                <div class="auto-container">
+                    <div class="content-box">
+                        <div class="content">
+                            <div class="inner">
+                                <h1>Найди своё <br>Идеальное жильё</h1>
+                                <div class="text">Путешествуйте свободно и легко</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide Item -->
+            <div class="slide-item">
+                <div class="image-layer" style="background-image: url(images/main-slider/Lucerne.jpg);"></div>
+                <div class="auto-container">
+                    <div class="content-box">
+                        <div class="content">
+                            <div class="inner">
+                                <h1>Найди своё <br>Идеальное жильё</h1>
+                                <div class="text">Путешествуйте. Деньги возвращаются, время - никогда</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!--End Banner Section -->
+
+    <!--Help Section-->
+    <section class="about-section">
+        <div class="pattern-bottom"></div>
+        <span class="dotted-pattern dotted-pattern-1"></span>
+        <span class="tri-pattern tri-pattern-1"></span>
+        <div class="auto-container">
+            <!--Filters Section-->
+            <div class="filters-section">
+                <div class="form-box default-form filter-form wow fadeInUp" data-wow-delay="0ms"
+                     data-wow-duration="1500ms">
+                    <form method="post" action="">
+                        <div class="row clearfix">
+                            <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="field-label">Где хотите найти?</div>
+                                <div class="field-inner">
+                                    <input id="search-city" class="city" type="text" name="field-name"
+                                           placeholder="Введите название города">
+                                    <label></label>
+                                </div>
+                            </div>
+                            <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="field-label">Заезд</div>
+                                <div class="field-inner">
+                                    <input id="arrival-date" class="date-picker" type="text" name="field-name"
+                                           value="Nov 02. 2019" placeholder="">
+                                    <label for="arrival-date" class="icon flaticon-down-arrow"></label>
+                                </div>
+                            </div>
+                            <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="field-label">Отъезд</div>
+                                <div class="field-inner">
+                                    <input id="depart-date" class="date-picker" type="text" name="field-name"
+                                           value="Nov 12. 2019" placeholder="">
+                                    <label for="depart-date" class="icon flaticon-down-arrow"></label>
+                                </div>
+                            </div>
+                            <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="field-label">Гости</div>
+                                <div class="field-inner">
+                                    <div class="check-sel-box">
+                                        <div class="check-sel-btn">
+                                            <span class="adult-info">2 Взрослых.</span>
+                                            <span class="child-info">1 Ребенок</span>
+                                        </div>
+                                        <ul class="check-sel-droplist">
+                                            <li>
+                                                <div class="sel-title">Количество взрослых:</div>
+                                                <div class="clearfix">
+                                                    <div class="radio-block adult-block"><input type="radio"
+                                                                                                name="adult-group"
+                                                                                                id="radio-1"
+                                                                                                value="1 Взрослый."><label
+                                                            for="radio-1">1</label></div>
+                                                    <div class="radio-block adult-block"><input type="radio"
+                                                                                                name="adult-group"
+                                                                                                id="radio-2"
+                                                                                                value="2 Взрослых."
+                                                                                                checked=""><label
+                                                            for="radio-2">2</label></div>
+                                                    <div class="radio-block adult-block"><input type="radio"
+                                                                                                name="adult-group"
+                                                                                                id="radio-3"
+                                                                                                value="3 Взрослых."><label
+                                                            for="radio-3">3</label></div>
+                                                    <div class="radio-block adult-block"><input type="radio"
+                                                                                                name="adult-group"
+                                                                                                id="radio-4"
+                                                                                                value="4 Взрослых."><label
+                                                            for="radio-4">4</label></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="sel-title">Количество детей:</div>
+                                                <div class="clearfix">
+                                                    <div class="radio-block child-block"><input type="radio"
+                                                                                                name="child-group"
+                                                                                                id="radio-5"
+                                                                                                value="1 Ребенок"
+                                                                                                checked=""><label
+                                                            for="radio-5">1</label></div>
+                                                    <div class="radio-block child-block"><input type="radio"
+                                                                                                name="child-group"
+                                                                                                id="radio-6"
+                                                                                                value="2 Детей"><label
+                                                            for="radio-6">2</label></div>
+                                                    <div class="radio-block child-block"><input type="radio"
+                                                                                                name="child-group"
+                                                                                                id="radio-7"
+                                                                                                value="3 Детей"><label
+                                                            for="radio-7">3</label></div>
+                                                    <div class="radio-block child-block"><input type="radio"
+                                                                                                name="child-group"
+                                                                                                id="radio-8"
+                                                                                                value="4 Детей"><label
+                                                            for="radio-8">4</label></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="field-label e-label">&nbsp;</div>
+                                <div class="field-inner">
+                                    <button class="theme-btn btn-style-one"><span
+                                            class="btn-title">Проверить цены</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <!--Text Column-->
+                <div class="text-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner">
+                        <div class="sec-title">
+                            <h2>Как выбрать<br> жилье?</h2>
+                        </div>
+                        <div class="text">Наши эксперты помогут вам.
+                        </div>
+                        <div class="link-box">
+                            <a href="" class="theme-btn btn-style-one"><span
+                                    class="btn-title">Смотреть</span></a>
+                        </div>
+                    </div>
+                </div>
+                <!--Image Column-->
+                <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="image-box">
+                            <span class="dotted-pattern dotted-pattern-2"></span>
+                            <figure class="image"><img src="images/resource/inspire.jpg" alt="" title="">
+                            </figure>
+                            <div class="cap"><span class="txt">Найди <br>своё.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--About Section-->
+    <section class="facts-section">
+        <span class="dotted-pattern dotted-pattern-3"></span>
+        <div class="left-bottom-image"><img src="images/resource/samolet.png" alt="samolet" title=""></div>
+        <div class="auto-container">
+            <div class="row clearfix">
+                <!--Title Column-->
+                <div class="title-column col-xl-7 col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner">
+                        <div class="sec-title">
+                            <h2>Немного о <br> SomeHomes</h2>
+                            <div class="lower-text">Миссия SomeHomes — найти идеальное жильё для вашего путешествия.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Facts Column-->
+                <div class="facts-column col-xl-5 col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner">
+                        <div class="facts">
+                            <div class="fact-block">
+                                <div class="fact-inner">
+                                    <div class="fact-count wow zoomInStable" data-wow-delay="0ms"
+                                         data-wow-duration="2000ms">
+                                        <div class="count-box"><span class="count-text" data-stop="10"
+                                                                     data-speed="2000">0</span>
+                                        </div>
+                                    </div>
+                                    <h4>Лет на рынке</h4>
+                                    <div class="text">Мы бросаем вызов себе и своей отрасли, чтобы стать более
+                                        устойчивыми.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fact-block">
+                                <div class="fact-inner">
+                                    <div class="fact-count wow zoomInStable" data-wow-delay="0ms"
+                                         data-wow-duration="2000ms">
+                                        <div class="count-box"><span class="count-text" data-stop="7712"
+                                                                     data-speed="9000">0</span></div>
+                                    </div>
+                                    <h4>Объектов зарегистрировано</h4>
+                                    <div class="text">добавить сюда фразу</div>
+                                </div>
+                            </div>
+                            <div class="fact-block">
+                                <div class="fact-inner">
+                                    <div class="fact-count wow zoomInStable" data-wow-delay="0ms"
+                                         data-wow-duration="2000ms">
+                                        <div class="count-box"><span class="count-text" data-stop="145"
+                                                                     data-speed="4000">0</span></div>
+                                    </div>
+                                    <h4>Стран</h4>
+                                    <div class="text">В которых вы можете найти своё идеальное жильё</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="dashed-separator">
+        <div class="auto-container"><span></span></div>
+    </div>
+
+    <!--Place Section-->
+    <section class="rooms-section-one">
+        <div class="outer-container">
+            <div class="auto-container">
+                <div class="sec-title centered">
+                    <h2>Популярные направления</h2>
+                    <div class="lower-text">Ещё не решили куда хотите отправиться? Посмотрите популярные направления.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="column col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="room-block-one height-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <div class="image-layer"
+                                     style="background-image: url(images/gallery/barcelona.jpg);"></div>
+                                <figure class="image"><img src="images/gallery/barcelona.jpg" alt="Barcelona" title="">
+                                </figure>
+                            </div>
+                            <div class="cap-box">
+                                <div class="cap-inner">
+                                    <h5>Испания</h5>
+                                </div>
+                            </div>
+                            <div class="hover-box">
+                                <div class="hover-inner">
+                                    <h4>Барселона</h4>
+                                    <div class="pricing clearfix">
+                                        <div class="price">От <span>&#8381 (цена)</span></div>
+                                    </div>
+                                    <div class="text">Не будет преувеличением сказать, что в Барселоне удивляет все:
+                                        начиная от эпатажных творений Гауди,
+                                        заканчивая городским рынком.
+                                    </div>
+                                    <div class="link-box"><a href=""
+                                                             class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-block-one height-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <div class="image-layer"
+                                     style="background-image: url(images/gallery/lissabon.jpg);"></div>
+                                <figure class="image"><img src="images/gallery/lissabon.jpg" alt="Lissabon" title="">
+                                </figure>
+                            </div>
+                            <div class="cap-box">
+                                <div class="cap-inner">
+                                    <h5>Португалия</h5>
+                                </div>
+                            </div>
+                            <div class="hover-box">
+                                <div class="hover-inner">
+                                    <h4>Лиссабон</h4>
+                                    <div class="pricing clearfix">
+                                        <div class="price">От <span>&#8381 (цена)</span></div>
+                                    </div>
+                                    <div class="text">Лиссабон или Лижбоа, как нежно зовут его португальцы, город
+                                        удивительный и неповторимый.
+                                        Город отполированной калсады и соленого ветра.
+                                    </div>
+                                    <div class="link-box"><a href=""
+                                                             class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="room-block-one height-two wow fadeInUp" data-wow-delay="300ms"
+                         data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <div class="image-layer" style="background-image: url(images/gallery/paris.jpg);"></div>
+                                <figure class="image"><img src="images/gallery/paris.jpg" alt="Paris" title=""></figure>
+                            </div>
+                            <div class="cap-box">
+                                <div class="cap-inner">
+                                    <h5>Франция</h5>
+                                </div>
+                            </div>
+                            <div class="hover-box">
+                                <div class="hover-inner">
+                                    <h4>Париж</h4>
+                                    <div class="pricing clearfix">
+                                        <div class="price">От <span>&#8381 (цена)</span></div>
+                                    </div>
+                                    <div class="text">Город вечной любви, столица романтики, колыбель современной моды,
+                                        родина кинематографа как искусства.
+                                    </div>
+                                    <div class="link-box"><a href=""
+                                                             class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="room-block-one height-one wow fadeInUp" data-wow-delay="600ms"
+                         data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <div class="image-layer" style="background-image: url(images/gallery/swis.png);"></div>
+                                <figure class="image"><img src="images/gallery/swis.png" alt="Switzerland" title="">
+                                </figure>
+                            </div>
+                            <div class="cap-box">
+                                <div class="cap-inner">
+                                    <h5>Швейцария</h5>
+                                </div>
+                            </div>
+                            <div class="hover-box">
+                                <div class="hover-inner">
+                                    <h4>Лугано</h4>
+                                    <div class="pricing clearfix">
+                                        <div class="pricing clearfix">
+                                            <div class="price">От <span>&#8381 (цена)</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="text">Реально существующий миф. Здесь вы встретите больше контрастов,
+                                        чем где бы то ни было
+                                    </div>
+                                    <div class="link-box"><a href=""
+                                                             class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-block-one height-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <div class="image-layer" style="background-image: url(images/gallery/milan.jpg);"></div>
+                                <figure class="image"><img src="images/gallery/milan.jpg" alt="Milan" title=""></figure>
+                            </div>
+                            <div class="cap-box">
+                                <div class="cap-inner">
+                                    <h5>Италия</h5>
+                                </div>
+                            </div>
+                            <div class="hover-box">
+                                <div class="hover-inner">
+                                    <h4>Милан</h4>
+                                    <div class="pricing clearfix">
+                                        <div class="pricing clearfix">
+                                            <div class="price">От <span>&#8381 (цена)</span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text">Мировой центр моды, «Другая столица» Италии, город, живущий
+                                        футболом. Он поражает насыщенным бурным ритмом жизни и контрастность.
+                                    </div>
+                                    <div class="link-box"><a href=""
+                                                             class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--Steps Section-->
+    <section class="offers-section-one">
+        <div class="auto-container">
+
+            <div class="upper-box clearfix">
+                <div class="sec-title">
+                    <h2>3 простых шага <br>до вашего идеального жилья</h2>
+                </div>
+                <div class="link-box">
+                    <a href="" class="theme-btn btn-style-one"><span
+                            class="btn-title">View All Offers</span></a>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="offers-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner">
+                        <div class="offer-block">
+                            <div class="offer-inner">
+                                <div class="fact-thumb wow zoomInStable" data-wow-delay="0ms"
+                                     data-wow-duration="1500ms">
+                                    <div class="image"><img src="images/resource/1.png" alt="" title=""></div>
+                                </div>
+                                <h4>Поиск</h4>
+                                <div class="text">Найдите понравившееся жильё.</div>
+                                <a href="" class="over-link"></a>
+                            </div>
+                        </div>
+                        <div class="offer-block">
+                            <div class="offer-inner">
+                                <div class="fact-thumb wow zoomInStable" data-wow-delay="300ms"
+                                     data-wow-duration="1500ms">
+                                    <div class="image"><img src="images/resource/2.png" alt="" title=""></div>
+                                </div>
+                                <h4>Бронирование</h4>
+                                <div class="text">Нашли подходящий вариант? Чудесно! Бронируйте!</div>
+                                <a href="" class="over-link"></a>
+                            </div>
+                        </div>
+                        <div class="offer-block">
+                            <div class="offer-inner">
+                                <div class="fact-thumb wow zoomInStable" data-wow-delay="600ms"
+                                     data-wow-duration="1500ms">
+                                    <div class="image"><img src="images/resource/3.png" alt="" title=""></div>
+                                </div>
+                                <h4>Путешествие</h4>
+                                <div class="text">Берите необходимые вещи, отличное настроение и вперёд к новым
+                                    открытиям.
+                                </div>
+                                <a href="" class="over-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="images-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner">
+                        <span class="dotted-pattern dotted-pattern-4"></span>
+                        <div class="images">
+                            <div class="image wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms"><img
+                                    src="images/resource/step1.jpg" alt="" title=""></div>
+                            <div class="image wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms"><img
+                                    src="images/resource/step2.jpg" alt="" title=""></div>
+                            <div class="image wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms"><img
+                                    src="images/resource/step3.jpg" alt="" title=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--Featured Section-->
+    <section class="featured-section">
+        <div class="pattern-top"></div>
+        <span class="dotted-pattern dotted-pattern-3"></span>
+        <span class="tri-pattern tri-pattern-3"></span>
+        <div class="auto-container">
+            <div class="featured-block">
+                <div class="row clearfix">
+                    <!--Text Column-->
+                    <div class="text-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="inner wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <h3>Открой для себя <br>Европу вместе с нами.</h3>
+                            <div class="text">Только по Вашим правилам.
+                            </div>
+                            <div class="link-box">
+                                <a href="" class="theme-btn btn-style-one"><span
+                                        class="btn-title">Открыть</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Image Column-->
+                    <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <div class="image-box">
+                                <figure class="image"><a href="#"><img src="images/resource/europe.jpg" alt="europe"
+                                                                       title=""></a></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-block alternate">
+                <div class="row clearfix">
+                    <!--Text Column-->
+                    <div class="text-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <h3>Покорите Азию</h3>
+                            <div class="text">Только лучшие воспоминания.
+                            </div>
+                            <div class="link-box">
+                                <a href="" class="theme-btn btn-style-one"><span
+                                        class="btn-title">Покорить</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Image Column-->
+                    <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="inner wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <div class="image-box">
+                                <figure class="image"><a href="#"><img src="images/resource/asia.jpg" alt="asia"
+                                                                       title=""></a></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Video Section-->
+    <section class="video-section">
+        <div class="image-layer" style="background-image: url(images/background/fonbehindvideo.jpg);"></div>
+        <div class="auto-container">
+            <div class="content-box wow zoomIn" data-wow-delay="0ms" data-wow-duration="2000ms">
+                <h1>Посмотри на мир. Он куда удивительнее cнов.</h1>
+                <div class="play-link"><a href="https://www.youtube.com/watch?v=UGnrT0F-Igs&ab_channel=KienLam"
+                                          class="lightbox-image"><span class="icon flaticon-play-button-3"></span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Blog Section-->
+    <section class="testimonials-section">
+        <span class="dotted-pattern dotted-pattern-3"></span>
+        <span class="tri-pattern tri-pattern-2"></span>
+        <div class="auto-container">
+            <div class="sec-title centered">
+                <h2>Блоги путешественников</h2>
+            </div>
+
+            <div class="carousel-box">
+                <div class="testimonial-carousel owl-theme owl-carousel">
+                    <div class="testimonial-block">
+                        <div class="inner">
+                            <div class="content-box">
+                                <div class="content">
+                                    <div class="quote-icon"><span class="flaticon-quote-1"></span></div>
+                                    <div class="text">Пример того, как надо мечтать и осуществлять свои мечты. Морской
+                                        биолог и подводный фотограф. Современный Жак Ив Кусто.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info">
+                                <div class="image"><img src="images/resource/alexandersemenov.png" alt="photo"></div>
+                                <div class="name">Саша Семёнов</div>
+                                <div class="designation"><a rel="noopener noreferrer"
+                                                            href="https://shilovpope.livejournal.com/" target="_blank">Блог</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block">
+                        <div class="inner">
+                            <div class="content-box">
+                                <div class="content">
+                                    <div class="quote-icon"><span class="flaticon-quote-1"></span></div>
+                                    <div class="text">Легендарное тревел-шоу "Пора Валить", а так же богатый набор
+                                        золотого контента от путешествия на Северный Полюс до разоблачения сырков Б.Ю.
+                                        Александров.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info">
+                                <div class="image"><img src="images/resource/usachev.jpg" alt="photo"></div>
+                                <div class="name">Руслан Усачев</div>
+                                <div class="designation"><a rel="noopener noreferrer"
+                                                            href="https://www.youtube.com/c/usachevShow/featured"
+                                                            target="_blank">Блог</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block">
+                        <div class="inner">
+                            <div class="content-box">
+                                <div class="content">
+                                    <div class="quote-icon"><span class="flaticon-quote-1"></span></div>
+                                    <div class="text">Фотограф из Нью-Йорка — пример того, как можно круто изменить свою
+                                        жизнь. Он оставил престижную работу и отправился путешествовать по миру.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info">
+                                <div class="image"><img src="images/resource/huntington.jpg" alt=""></div>
+                                <div class="name">Foster Huntington</div>
+                                <div class="designation"><a rel="noopener noreferrer"
+                                                            href="https://www.instagram.com/fosterhunting/"
+                                                            target="_blank">Блог</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block">
+                        <div class="inner">
+                            <div class="content-box">
+                                <div class="content">
+                                    <div class="quote-icon"><span class="flaticon-quote-1"></span></div>
+                                    <div class="text">Пилот Бьерн Киндлер делает потрясающие снимки с высоты птичьего
+                                        полета. Также в его блоге есть и фотографии всех самых живописных стран, в
+                                        которых ему удалось побывать. Поверьте, их немало!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info">
+                                <div class="image"><img src="images/resource/bkindler.jpg" alt=""></div>
+                                <div class="name">Björn Kindler</div>
+                                <div class="designation"><a rel="noopener noreferrer" href="https://bkindler.net/"
+                                                            target="_blank">Блог</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block">
+                        <div class="inner">
+                            <div class="content-box">
+                                <div class="content">
+                                    <div class="quote-icon"><span class="flaticon-quote-1"></span></div>
+                                    <div class="text">На канале есть четкая система разделения по плейлистам.
+                                        Большинство видео являются набором серий одного путешествия, но их можно
+                                        смотреть и вне общего порядка.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info">
+                                <div class="image"><img src="images/resource/dmitriev.jpg" alt=""></div>
+                                <div class="name">Дмитрий Дмитриев</div>
+                                <div class="designation"><a rel="noopener noreferrer"
+                                                            href="https://www.youtube.com/user/Justdoit150gmail/featured"
+                                                            target="_blank">Блог</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block">
+                        <div class="inner">
+                            <div class="content-box">
+                                <div class="content">
+                                    <div class="quote-icon"><span class="flaticon-quote-1"></span></div>
+                                    <div class="text">Самые частые видео на канале Касё – это видео с едой разных стран.
+                                        Если вам нравятся путешествия, разговорный формат видео, живая съемка на хорошую
+                                        камеру, тогда вам сюда!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info">
+                                <div class="image"><img src="images/resource/gasanov.jpg" alt=""></div>
+                                <div class="name">Касё Гасанов</div>
+                                <div class="designation"><a rel="noopener noreferrer"
+                                                            href="https://www.youtube.com/user/Justdoit150gmail/featured"
+                                                            target="_blank">Блог</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block">
+                        <div class="inner">
+                            <div class="content-box">
+                                <div class="content">
+                                    <div class="quote-icon"><span class="flaticon-quote-1"></span></div>
+                                    <div class="text">Александр Кондрашов ведет на Youtube блог имени себя. Он много
+                                        путешествует, занимается подводной охотой и с удовольствием рассказывает об этом
+                                        и многом другом на своем канале.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info">
+                                <div class="image"><img src="images/resource/kondrashov.jpg" alt=""></div>
+                                <div class="name">Александр Кондрашов</div>
+                                <div class="designation"><a rel="noopener noreferrer"
+                                                            href="https://www.youtube.com/user/Justdoit150gmail/featured"
+                                                            target="_blank">Блог</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block">
+                        <div class="inner">
+                            <div class="content-box">
+                                <div class="content">
+                                    <div class="quote-icon"><span class="flaticon-quote-1"></span></div>
+                                    <div class="text">Много классных подводных фотографий, например, из поездки этим
+                                        летом на Командорские Острова. Блог регулярно обновляется.
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="info">
+                                <div class="image"><img src="images/resource/narchuk.jpg" alt=""></div>
+                                <div class="name">Андрей Нарчук</div>
+                                <div class="designation"><a rel="noopener noreferrer"
+                                                            href="https://torchuck.livejournal.com/" target="_blank">Блог</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block">
+                        <div class="inner">
+                            <div class="content-box">
+                                <div class="content">
+                                    <div class="quote-icon"><span class="flaticon-quote-1"></span></div>
+                                    <div class="text">Профессиональный путешественник и беллетрист Артур Шигапов создал
+                                        множество интереснейших путеводителей по странам Европы и Юго-Восточной Азии.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info">
+                            <div class="image"><img src="images/resource/shigapov.png" alt=""></div>
+                            <div class="name">Артур Шигапов</div>
+                            <div class="designation"><a rel="noopener noreferrer"
+                                                        href="https://popados.livejournal.com/" target="_blank">Блог</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+</section>
+
+<!--House Section-->
+<section class="news-section">
+    <div class="pattern-top"></div>
+    <div class="auto-container">
+        <div class="upper-box clearfix">
+            <div class="sec-title">
+                <h2>Дома, <br>которые нравятся гостям </h2>
+            </div>
+            <div class="link-box">
+                <a href="" class="theme-btn btn-style-one"><span class="btn-title">View All Post</span></a>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <!--News Block-->
+            <div class="news-block col-lg-4 col-md-6 col-sm-12">
+                <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <div class="image-box">
+                        <figure class="image"><a href=""><img src="images/resource/news-image-1.jpg"
+                                                                              alt="" title=""></a></figure>
+                    </div>
+                    <div class="post-meta">
+                        <span>от (здесь цена)</span>
+                    </div>
+                    <h4><a href="">(Название отеля)</a></h4>
+                    <div class="link-box">
+                        <a href=""><span class="icon flaticon-arrows-10"></span>Смотреть предложения</a>
+                    </div>
+                </div>
+            </div>
+            <!--News Block-->
+            <div class="news-block col-lg-4 col-md-6 col-sm-12">
+                <div class="inner-box wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+                    <div class="image-box">
+                        <figure class="image"><a href=""><img src="images/resource/news-image-2.jpg"
+                                                                              alt="" title=""></a></figure>
+                    </div>
+                    <div class="post-meta">
+                        <span>от (здесь цена)</span>
+                    </div>
+                    <h4><a href="">(Название отеля)</a></h4>
+                    <div class="link-box">
+                        <a href=""><span class="icon flaticon-arrows-10"></span>Смотреть предложения</a>
+                    </div>
+                </div>
+            </div>
+            <!--News Block-->
+            <div class="news-block col-lg-4 col-md-6 col-sm-12">
+                <div class="inner-box wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+                    <div class="image-box">
+                        <figure class="image"><a href=""><img src="images/resource/news-image-3.jpg"
+                                                                              alt="" title=""></a></figure>
+                    </div>
+                    <div class="post-meta">
+                        <span>от (здесь цена)</span>
+                    </div>
+                    <h4><a href="">(Название отеля, нутри ссылка на все дома этого города)</a></h4>
+                    <div class="link-box">
+                        <a href=""><span class="icon flaticon-arrows-10"></span>Смотреть предложения</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Footer -->
+<footer class="main-footer">
+    <div class="top-pattern-layer-dark"></div>
+
+    <!--Widgets Section-->
+    <div class="widgets-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                <!--Column-->
+                <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
+                    <div class="footer-widget about-widget">
+                        <div class="logo">
+                            <a href="#"><img src="images/footer-logo.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Column-->
+                <div class="column col-xl-5 col-lg-8 col-md-12 col-sm-12">
+                    <div class="footer-widget links-widget">
+                        <div class="widget-content">
+                            <div class="row clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="widget-title">
+                                        <h4>Навигация</h4>
+                                    </div>
+                                    <ul class="links">
+                                        <li><a th:href="@{/}">На главную</a></li>
+                                        <li><a th:href="@{/sign-up}">Зарегистрироваться</a></li>
+                                        <li><a th:href="@{/sign-in}" >Войти</a></li>
+                                        <li><a th:href="@{/contact}">Связаться с нами</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="widget-title">
+                                        <h4>Контакты</h4>
+                                    </div>
+                                    <ul class="info">
+                                        <li class="address">221b, Baker Street, London, NW1 6XE, UK</li>
+                                        <li class="phone"><a href="tel:+2(351) 248-2599">+2(351) 248-2599</a></li>
+                                        <li class="email"><a th:href="@{/}">info@somehomes.com</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Column-->
+                <div class="column col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-widget newsletter-widget">
+                        <div class="widget-title">
+                            <h4>Новости</h4>
+                        </div>
+                        <div class="text">Подписаться на рассылку новостной ленты</div>
+                        <!--Newsletter-->
+                        <div class="newsletter-form">
+                            <form method="post" th:action="@{/index}">
+                                <div class="form-group clearfix">
+                                    <input type="email" name="email" value="" placeholder="Email" required>
+                                    <button type="submit" class="theme-btn btn-style-one"><span class="btn-title">Подписаться</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <div class="inner clearfix">
+                <div class="copyright"> 2021 SomeHomes - All Right Reserved</div>
+                <div class="bottom-links">
+                    <a href="#">Правила и условия</a> &ensp;|&ensp; <a href="#">
+                    Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+</div>
+<!--End pagewrapper--><!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery-ui.js}"></script>
+<script th:src="@{/js/jquery.fancybox.js}"></script>
+<script th:src="@{/js/owl.js}"></script>
+<script th:src="@{/js/scrollbar.js}"></script>
+<script th:src="@{/js/appear.js}"></script>
+<script th:src="@{/js/wow.js}"></script>
+<script th:src="@{/js/custom-script.js}"></script>
+
+</body>
+</html>
