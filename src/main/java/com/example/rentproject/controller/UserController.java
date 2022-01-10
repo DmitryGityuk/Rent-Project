@@ -38,5 +38,4 @@ public class UserController {
         userService.updateUser(id, user);
         return "redirect:/profile";
     }
-
 }

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Жильё</title>
+    <!-- Stylesheets -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <!-- Responsive File -->
+    <link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+    <!-- Responsive Settings -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+            crossorigin="anonymous"></script>
+    <!--[if lt IE 9]>
+    <script th:src="@{/js/respond.js}"></script><![endif]-->
+</head>
+
+<body>
+
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="icon"></div>
+    </div>
+
+    <!--Offers Section-->
+    <section class="packages-section">
+        <div class="title-box">
+            <h2>House Info</h2>
+        </div>
+        <div class="auto-container">
+
+            <!--Mixit Galery-->
+            <div class="mixit-gallery filter-gallery">
+                <div class="filters clearfix">
+                    <h4>Станьте хозяином заполнив простую форму</h4>
+                </div>
+
+                <div class="filter-list ">
+
+                    <form class="form-horizontal" role="form" th:action="@{/addedHouse}" th:method="post"
+                          th:object="${house}"
+                    >
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="houseName">Название</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="houseName" name="houseName"
+                                       placeholder="название дома" th:field="*{houseName}">
+                                <span th:if="${#fields.hasErrors('houseName')}"
+                                      th:errors="*{houseName}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="type">Какое у вас жилье?</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="type" name="type"
+                                       placeholder="тип жилья" th:field="*{type}">
+                                <span th:if="${#fields.hasErrors('type')}"
+                                      th:errors="*{type}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="guests">Сколько гостей вы готовы
+                                принять?</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="guests" name="guests"
+                                       placeholder="количество гостей" th:field="*{guests}">
+                                <span th:if="${#fields.hasErrors('guests')}"
+                                      th:errors="*{guests}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="rooms">Количество комнат</label>
+                            <div class="col-lg-6">
+                                <input type="number" class="form-control" id="rooms" name="rooms"
+                                       placeholder="количество комнат"
+                                       th:field="*{rooms}">
+                                <span th:if="${#fields.hasErrors('rooms')}"
+                                      th:errors="*{rooms}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="location">Где расположено ваше жильё?</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="location" name="location" placeholder=" "
+                                       th:field="*{location}">
+                                <span th:if="${#fields.hasErrors('location')}"
+                                      th:errors="*{location}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="price">Цена за ночь</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="price" name="price" placeholder="цена"
+                                       th:field="*{price}">
+                                <span th:if="${#fields.hasErrors('price')}"
+                                      th:errors="*{price}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="description">Описание</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="description" name="description"
+                                       placeholder="например: Объект в многоквартирном доме или комплексе"
+                                       th:field="*{description}">
+                                <span th:if="${#fields.hasErrors('description')}"
+                                      th:errors="*{description}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="top-pattern-layer-dark"></div>
+
+        <!--Widgets Section-->
+        <div class="widgets-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+
+                    <!--Column-->
+                    <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
+                        <div class="footer-widget about-widget">
+                            <div class="logo">
+                                <a href="#"><img src="images/footer-logo.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-xl-5 col-lg-8 col-md-12 col-sm-12">
+                        <div class="footer-widget links-widget">
+                            <div class="widget-content">
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="widget-title">
+                                            <h4>Навигация</h4>
+                                        </div>
+                                        <ul class="links">
+                                            <li><a th:href="@{/}">На главную</a></li>
+                                            <li><a th:href="@{/sign-up}">Зарегистрироваться</a></li>
+                                            <li><a th:href="@{/sign-in}">Войти</a></li>
+                                            <li><a th:href="@{/contact}">Связаться с нами</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="widget-title">
+                                            <h4>Контакты</h4>
+                                        </div>
+                                        <ul class="info">
+                                            <li class="address">221b, Baker Street, London, NW1 6XE, UK</li>
+                                            <li class="phone"><a href="tel:+2(351) 248-2599">+2(351) 248-2599</a>
+                                            </li>
+                                            <li class="email"><a
+                                                    href="mailto:info@somehomes.com">info@somehomes.com</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget newsletter-widget">
+                            <div class="widget-title">
+                                <h4>Новости</h4>
+                            </div>
+                            <div class="text">Подписаться на рассылку новостной ленты</div>
+                            <!--Newsletter-->
+                            <div class="newsletter-form">
+                                <form method="post" th:action="@{/index}">
+                                    <div class="form-group clearfix">
+                                        <input type="email" name="email" value="" placeholder="Email" required>
+                                        <button type="submit" class="theme-btn btn-style-one"><span
+                                                class="btn-title">Подписаться</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="auto-container">
+                <div class="inner clearfix">
+                    <div class="copyright"> 2021 SomeHomes - All Right Reserved</div>
+                    <div class="bottom-links">
+                        <a href="#">Правила и условия</a> &ensp;|&ensp; <a href="#">
+                        Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/scrollbar.js"></script>
+<script src="js/mixitup.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/custom-script.js"></script>
+
+</body>
+</html>

@@ -101,6 +101,9 @@ public class UserService implements UserDetailsService {
                 user.setActivationCode(UUID.randomUUID().toString());
             }
         }
+        if (!isEmailChanged){
+            user.setAccountIsActivated(true);
+        }
         user.setPassword(EncryptedPasswordUtils.encryptedPassword(user.getPassword()));
         user.setRoles(Collections.singleton(Role.USER));
         user.setUsername(user.getUsername());

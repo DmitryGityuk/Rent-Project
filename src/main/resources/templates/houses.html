@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>SomeHomes</title>
+    <title>Жильё</title>
     <!-- Stylesheets -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
-    <link th:href="@{/css/stylesLogin.css}" rel="stylesheet"/>
     <!-- Responsive File -->
     <link th:href="@{/css/responsive.css}" rel="stylesheet">
 
@@ -40,37 +39,19 @@
                 <!--Logo-->
                 <div class="logo-box">
                     <div class="logo"><a th:href="@{/}" title="SomeHomes-logo"><img src="images/logo.png"
-                                                                                       alt="SomeHomes"
-                                                                                       title="SomeHomes-logo"></a></div>
+                                                                                    alt="SomeHomes"
+                                                                                    title="SomeHomes-logo"></a></div>
                 </div>
                 <div class="nav-outer clearfix">
                     <!--Mobile Navigation Toggler-->
                     <div class="mobile-nav-toggler"><span class="icon flaticon-menu-2"></span><span
                             class="txt">Menu</span></div>
-
-                    <!-- Main Menu -->
-                    <nav class="main-menu navbar-expand-md navbar-light">
-                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                <li><a rel="noopener noreferrer" target="_blank" href="https://www.aviasales.ru">Авиабилеты</a>
-                                </li>
-                                <li><a rel="noopener noreferrer" target="_blank" href="https://bookingcar.eu/">Аренда
-                                    автомобилей</a></li>
-                            </ul>
-
-                        </div>
-                    </nav>
                 </div>
 
-
                 <div class="other-links clearfix">
-                    <div class="info">
-                        <ul class="clearfix">
-                            <li class="dropdown"><a th:href="@{/profile}"><span class="icon flaticon-user"></span><span
-                                    class="txt">Ваш акккаунт</span></a>
-                            </li>
-                            </li>
-                        </ul>
+                    <div class="link-box">
+                        <a th:href="@{/addedHouse}" class="theme-btn btn-style-one"><span
+                                class="btn-title">Добавить новое жильё</span></a>
                     </div>
                 </div>
 
@@ -92,23 +73,19 @@
                 <!--Social Links-->
             </div>
         </div><!-- End Mobile Menu -->
-
     </header>
     <!-- End Main Header -->
 
 
     <!-- Banner Section -->
-    <section class="page-banner">
-        <div class="image-layer" style="background-image:url(images/background/banner-image-3.jpg);"></div>
-        <div class="banner-bottom-pattern"></div>
-    </section>
+
     <!--End Banner Section -->
 
     <!--Events Section-->
     <section class="events-section">
         <div class="auto-container">
             <div class="events-box">
-                <!--UserInfo-->
+                <!--Room-->
                 <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="inner-box">
                         <div class="image-box">
@@ -116,81 +93,109 @@
                             </figure>
                             <div class="image-layer"
                                  style="background-image: url(images/resource/featured-image-41.jpg);"></div>
-                            <a class="overlink" th:href="@{updateUserInfo/{id}(id=${user.getId()})}"></a>
+                            <a class="overlink" href="event-single.html"></a>
                         </div>
                         <div class="content-box">
-                            <h4>Персональная Информация</h4>
-                            <div class="text">Обновите свои данные.
+                            <h4>Название жилья</h4>
+                            <div class="post-meta">
+                                <span>где расположено</span>
                             </div>
-                            <div class="link-box"><a th:href="@{updateUserInfo/{id}(id=${user.getId()})}" class="theme-btn btn-style-one"><span
-                                    class="btn-title">Редактировать</span></a></div>
+                            <div class="text">описание</div>
+                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
+                                    class="btn-title">редактировать</span></a></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" sec:authorize="hasAuthority('OWNER')">
+                <!--Room-->
+                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="inner-box">
                         <div class="image-box">
                             <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
                             </figure>
                             <div class="image-layer"
                                  style="background-image: url(images/resource/featured-image-41.jpg);"></div>
-                            <a class="overlink" ></a>
+                            <a class="overlink" href="event-single.html"></a>
                         </div>
                         <div class="content-box">
-                            <h4>Ваше жильё</h4>
-                            <div class="text">.
+                            <h4>Название жилья</h4>
+                            <div class="post-meta">
+                                <span>где расположено</span>
                             </div>
-                            <div class="link-box"><a th:href="@{/houses}" class="theme-btn btn-style-one"><span
-                                    class="btn-title">Редактировать</span></a></div>
+                            <div class="text">описание</div>
+                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
+                                    class="btn-title">редактировать</span></a></div>
                         </div>
                     </div>
                 </div>
 
-                <!--Booking-->
+                <!--Room-->
                 <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><img src="images/resource/featured-image-42.jpg" alt="" title="">
+                            <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
                             </figure>
                             <div class="image-layer"
-                                 style="background-image: url(images/resource/featured-image-42.jpg);"></div>
-                            <a class="overlink" href=""></a>
+                                 style="background-image: url(images/resource/featured-image-41.jpg);"></div>
+                            <a class="overlink" href="event-single.html"></a>
                         </div>
                         <div class="content-box">
-                            <h4>Бронирования</h4>
-                            <div class="text">Ваши бронирования.
+                            <h4>Название жилья</h4>
+                            <div class="post-meta">
+                                <span>где расположено</span>
                             </div>
-                            <div class="link-box"><a href="" class="theme-btn btn-style-one"><span
-                                    class="btn-title">Смотреть</span></a></div>
+                            <div class="text">описание</div>
+                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
+                                    class="btn-title">редактировать</span></a></div>
                         </div>
                     </div>
                 </div>
 
-                <!--Review-->
+                <!--Room-->
                 <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><img src="images/resource/featured-image-43.jpg" alt="" title="">
+                            <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
                             </figure>
                             <div class="image-layer"
-                                 style="background-image: url(images/resource/featured-image-43.jpg);"></div>
-                            <a class="overlink" href=""></a>
+                                 style="background-image: url(images/resource/featured-image-41.jpg);"></div>
+                            <a class="overlink" href="event-single.html"></a>
                         </div>
                         <div class="content-box">
-                            <h4>Отзывы</h4>
-                            <div class="text">Отзывы о проживании.
+                            <h4>Название жилья</h4>
+                            <div class="post-meta">
+                                <span>где расположено</span>
                             </div>
-                            <div class="link-box"><a href="" class="theme-btn btn-style-one"><span
-                                    class="btn-title">Смотреть</span></a></div>
+                            <div class="text">описание</div>
+                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
+                                    class="btn-title">редактировать</span></a></div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                        <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Выйти</a>
+
+                <!--Room-->
+                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
+                            </figure>
+                            <div class="image-layer"
+                                 style="background-image: url(images/resource/featured-image-41.jpg);"></div>
+                            <a class="overlink" href="event-single.html"></a>
+                        </div>
+                        <div class="content-box">
+                            <h4>Название жилья</h4>
+                            <div class="post-meta">
+                                <span>где расположено</span>
+                            </div>
+                            <div class="text">описание</div>
+                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
+                                    class="btn-title">редактировать</span></a></div>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </section>
@@ -225,7 +230,7 @@
                                         <ul class="links">
                                             <li><a th:href="@{/}">На главную</a></li>
                                             <li><a th:href="@{/sign-up}">Зарегистрироваться</a></li>
-                                            <li><a th:href="@{/sign-in}" >Войти</a></li>
+                                            <li><a th:href="@{/sign-in}">Войти</a></li>
                                             <li><a th:href="@{/contact}">Связаться с нами</a></li>
                                         </ul>
                                     </div>
@@ -235,10 +240,8 @@
                                         </div>
                                         <ul class="info">
                                             <li class="address">221b, Baker Street, London, NW1 6XE, UK</li>
-                                            <li class="phone"><a href="tel:+2(351) 248-2599">+2(351) 248-2599</a>
-                                            </li>
-                                            <li class="email"><a
-                                                    href="mailto:info@somehomes.com">info@somehomes.com</a></li>
+                                            <li class="phone"><a href="tel:+2(351) 248-2599">+2(351) 248-2599</a></li>
+                                            <li class="email"><a th:href="@{/}">info@somehomes.com</a></li>
                                         </ul>
                                     </div>
 
@@ -285,6 +288,7 @@
         </div>
 
     </footer>
+
 </div>
 <!--End pagewrapper--><!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
