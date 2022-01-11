@@ -22,8 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final DataSource dataSource;
     private final UserService userService;
 
-
-
     public SecurityConfig(DataSource dataSource, UserService userService) {
         this.dataSource = dataSource;
         this.userService = userService;
@@ -55,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/js/**",
                         "/images/**",
                         "/fonts/**",
+                        "/webjars/**",
                         "/index",
                         "/owner"
                 )

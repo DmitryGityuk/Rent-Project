@@ -23,16 +23,13 @@
     <script th:src="@{/js/respond.js}"></script><![endif]-->
 </head>
 <body>
-
 <div class="page-wrapper">
     <!-- Preloader -->
     <div class="preloader">
         <div class="icon"></div>
     </div>
-
     <!-- Main Header -->
     <header class="main-header header-style-one">
-
         <!-- Header Upper -->
         <div class="header-upper">
             <div class="inner-container clearfix">
@@ -58,7 +55,6 @@
             </div>
         </div>
         <!--End Header Upper-->
-
         <!-- Mobile Menu  -->
         <div class="mobile-menu">
             <div class="close-btn"><span class="icon flaticon-targeting-cross"></span></div>
@@ -75,18 +71,13 @@
         </div><!-- End Mobile Menu -->
     </header>
     <!-- End Main Header -->
-
-
-    <!-- Banner Section -->
-
-    <!--End Banner Section -->
-
     <!--Events Section-->
     <section class="events-section">
         <div class="auto-container">
             <div class="events-box">
-                <!--Room-->
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <!--House-->
+                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms"
+                     th:each="house : ${houses}">
                     <div class="inner-box">
                         <div class="image-box">
                             <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
@@ -96,119 +87,28 @@
                             <a class="overlink" href="event-single.html"></a>
                         </div>
                         <div class="content-box">
-                            <h4>Название жилья</h4>
+                            <h4 th:text="${house.houseName}"/>
                             <div class="post-meta">
-                                <span>где расположено</span>
+                                <span th:text="${house.location}"></span>
                             </div>
-                            <div class="text">описание</div>
-                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
-                                    class="btn-title">редактировать</span></a></div>
+                            <div class="text" th:text="${house.description}"/>
+                            <div class="link-box"><a th:href="'/house/' + ${house.id}" class="theme-btn btn-style-one"><span
+                                    class="btn-title">Редактировать</span></a></div><br/>
+                            <div class="link-box"><a th:href="'/house/delete/' + ${house.id}" class="theme-btn btn-danger"><span
+                                    class="btn-title">Удалить</span></a></div>
                         </div>
                     </div>
                 </div>
-
-                <!--Room-->
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
-                            </figure>
-                            <div class="image-layer"
-                                 style="background-image: url(images/resource/featured-image-41.jpg);"></div>
-                            <a class="overlink" href="event-single.html"></a>
-                        </div>
-                        <div class="content-box">
-                            <h4>Название жилья</h4>
-                            <div class="post-meta">
-                                <span>где расположено</span>
-                            </div>
-                            <div class="text">описание</div>
-                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
-                                    class="btn-title">редактировать</span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Room-->
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
-                            </figure>
-                            <div class="image-layer"
-                                 style="background-image: url(images/resource/featured-image-41.jpg);"></div>
-                            <a class="overlink" href="event-single.html"></a>
-                        </div>
-                        <div class="content-box">
-                            <h4>Название жилья</h4>
-                            <div class="post-meta">
-                                <span>где расположено</span>
-                            </div>
-                            <div class="text">описание</div>
-                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
-                                    class="btn-title">редактировать</span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Room-->
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
-                            </figure>
-                            <div class="image-layer"
-                                 style="background-image: url(images/resource/featured-image-41.jpg);"></div>
-                            <a class="overlink" href="event-single.html"></a>
-                        </div>
-                        <div class="content-box">
-                            <h4>Название жилья</h4>
-                            <div class="post-meta">
-                                <span>где расположено</span>
-                            </div>
-                            <div class="text">описание</div>
-                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
-                                    class="btn-title">редактировать</span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Room-->
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
-                            </figure>
-                            <div class="image-layer"
-                                 style="background-image: url(images/resource/featured-image-41.jpg);"></div>
-                            <a class="overlink" href="event-single.html"></a>
-                        </div>
-                        <div class="content-box">
-                            <h4>Название жилья</h4>
-                            <div class="post-meta">
-                                <span>где расположено</span>
-                            </div>
-                            <div class="text">описание</div>
-                            <div class="link-box"><a href="event-single.html" class="theme-btn btn-style-one"><span
-                                    class="btn-title">редактировать</span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
         </div>
     </section>
-
     <!-- Main Footer -->
     <footer class="main-footer">
         <div class="top-pattern-layer-dark"></div>
-
         <!--Widgets Section-->
         <div class="widgets-section">
             <div class="auto-container">
                 <div class="row clearfix">
-
                     <!--Column-->
                     <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
                         <div class="footer-widget about-widget">
@@ -217,7 +117,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!--Column-->
                     <div class="column col-xl-5 col-lg-8 col-md-12 col-sm-12">
                         <div class="footer-widget links-widget">
@@ -249,7 +148,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!--Column-->
                     <div class="column col-xl-4 col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-widget newsletter-widget">
@@ -273,7 +171,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Footer Bottom -->
         <div class="footer-bottom">
             <div class="auto-container">
@@ -286,13 +183,10 @@
                 </div>
             </div>
         </div>
-
     </footer>
-
 </div>
 <!--End pagewrapper--><!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
-
 <script th:src="@{/js/jquery.js}"></script>
 <script th:src="@{/js/popper.min.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
@@ -303,6 +197,5 @@
 <script th:src="@{/js/appear.js}"></script>
 <script th:src="@{/js/wow.js}"></script>
 <script th:src="@{/js/custom-script.js}"></script>
-
 </body>
 </html>

@@ -14,9 +14,9 @@ public class HouseService {
         this.houseRepository = houseRepository;
     }
 
-    public boolean regHouse(House house, @AuthenticationPrincipal User user){
+    public boolean regHouse(House house, @AuthenticationPrincipal User user) {
         House houseFromDB = houseRepository.findByHouseName(house.getHouseName());
-        if (houseFromDB != null){
+        if (houseFromDB != null) {
             return false;
         }
         house.setHouseName(house.getHouseName());
@@ -30,5 +30,18 @@ public class HouseService {
         house.setHouseIsReserved(false);
         houseRepository.save(house);
         return true;
+    }
+
+    public void updateHouse(House house, User user) {
+        house.setHouseName(house.getHouseName());
+        house.setUser(user);
+        house.setType(house.getType());
+        house.setRooms(house.getRooms());
+        house.setPrice(house.getPrice());
+        house.setGuests(house.getGuests());
+        house.setLocation(house.getLocation());
+        house.setDescription(house.getDescription());
+        house.setHouseIsReserved(false);
+        houseRepository.save(house);
     }
 }
