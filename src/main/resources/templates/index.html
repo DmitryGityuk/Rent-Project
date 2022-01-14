@@ -21,18 +21,14 @@
     <!--[if lt IE 9]>
     <script th:src="@{/js/respond.js}"></script><![endif]-->
 </head>
-
 <body>
-
 <div class="page-wrapper">
     <!-- Preloader -->
     <div class="preloader">
         <div class="icon"></div>
     </div>
-
     <!-- Main Header -->
     <header class="main-header header-style-one">
-
         <!-- Header Upper -->
         <div class="header-upper">
             <div class="inner-container clearfix">
@@ -46,7 +42,6 @@
                     <!--Mobile Navigation Toggler-->
                     <div class="mobile-nav-toggler"><span class="icon flaticon-menu-2"></span><span
                             class="txt">Menu</span></div>
-
                     <!-- Main Menu -->
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
@@ -59,7 +54,6 @@
                         </div>
                     </nav>
                 </div>
-
                 <div class="other-links clearfix" sec:authorize="!isAuthenticated()">
                     <div class="info">
                         <ul class="clearfix">
@@ -79,11 +73,9 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
         <!--End Header Upper-->
-
         <!-- Mobile Menu  -->
         <div class="mobile-menu">
             <div class="close-btn"><span class="icon flaticon-targeting-cross"></span></div>
@@ -98,15 +90,11 @@
                 <!--Social Links-->
             </div>
         </div><!-- End Mobile Menu -->
-
     </header>
     <!-- End Main Header -->
-
-
     <!-- Banner Section -->
     <section class="banner-section banner-one">
         <div class="banner-bottom-pattern"></div>
-
         <div class="banner-carousel owl-theme owl-carousel">
             <!-- Slide Item -->
             <div class="slide-item">
@@ -122,7 +110,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Slide Item -->
             <div class="slide-item">
                 <div class="image-layer" style="background-image: url(images/main-slider/tokyo.jpg);"></div>
@@ -137,7 +124,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Slide Item -->
             <div class="slide-item">
                 <div class="image-layer" style="background-image: url(images/main-slider/Lucerne.jpg);"></div>
@@ -156,7 +142,6 @@
         </div>
     </section>
     <!--End Banner Section -->
-
     <!--Help Section-->
     <section class="about-section">
         <div class="pattern-bottom"></div>
@@ -279,7 +264,7 @@
                         <div class="text">Наши эксперты помогут вам.
                         </div>
                         <div class="link-box">
-                            <a href="" class="theme-btn btn-style-one"><span
+                            <a th:href="@{/other}" class="theme-btn btn-style-one"><span
                                     class="btn-title">Смотреть</span></a>
                         </div>
                     </div>
@@ -298,7 +283,6 @@
             </div>
         </div>
     </section>
-
     <!--About Section-->
     <section class="facts-section">
         <span class="dotted-pattern dotted-pattern-3"></span>
@@ -313,7 +297,6 @@
                             <div class="lower-text">Миссия SomeHomes — найти идеальное жильё для вашего путешествия.
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!--Facts Column-->
@@ -342,7 +325,7 @@
                                                                      data-speed="9000">0</span></div>
                                     </div>
                                     <h4>Объектов зарегистрировано</h4>
-                                    <div class="text">добавить сюда фразу</div>
+                                    <div class="text">Присоединяйтесь и Вы</div>
                                 </div>
                             </div>
                             <div class="fact-block">
@@ -360,14 +343,11 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
-
     <div class="dashed-separator">
         <div class="auto-container"><span></span></div>
     </div>
-
     <!--Place Section-->
     <section class="rooms-section-one">
         <div class="outer-container">
@@ -378,7 +358,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row clearfix">
                 <div class="column col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div class="room-block-one height-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
@@ -404,7 +383,7 @@
                                         начиная от эпатажных творений Гауди,
                                         заканчивая городским рынком.
                                     </div>
-                                    <div class="link-box"><a href=""
+                                    <div class="link-box"><a th:href="@{/other}"
                                                              class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
                                     </div>
                                 </div>
@@ -434,7 +413,7 @@
                                         удивительный и неповторимый.
                                         Город отполированной калсады и соленого ветра.
                                     </div>
-                                    <div class="link-box"><a href=""
+                                    <div class="link-box"><a th:href="@{/other}"
                                                              class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
                                     </div>
                                 </div>
@@ -464,7 +443,7 @@
                                     <div class="text">Город вечной любви, столица романтики, колыбель современной моды,
                                         родина кинематографа как искусства.
                                     </div>
-                                    <div class="link-box"><a href=""
+                                    <div class="link-box"><a th:href="@{/other}"
                                                              class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
                                     </div>
                                 </div>
@@ -497,7 +476,7 @@
                                     <div class="text">Реально существующий миф. Здесь вы встретите больше контрастов,
                                         чем где бы то ни было
                                     </div>
-                                    <div class="link-box"><a href=""
+                                    <div class="link-box"><a th:href="@{/other}"
                                                              class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
                                     </div>
                                 </div>
@@ -527,7 +506,7 @@
                                     <div class="text">Мировой центр моды, «Другая столица» Италии, город, живущий
                                         футболом. Он поражает насыщенным бурным ритмом жизни и контрастность.
                                     </div>
-                                    <div class="link-box"><a href=""
+                                    <div class="link-box"><a th:href="@{/other}"
                                                              class="theme-btn btn-style-one"><span class="btn-title">Хочу сюда</span></a>
                                     </div>
                                 </div>
@@ -535,25 +514,21 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-
     <!--Steps Section-->
     <section class="offers-section-one">
         <div class="auto-container">
-
             <div class="upper-box clearfix">
                 <div class="sec-title">
                     <h2>3 простых шага <br>до вашего идеального жилья</h2>
                 </div>
                 <div class="link-box">
-                    <a href="" class="theme-btn btn-style-one"><span
-                            class="btn-title">View All Offers</span></a>
+                    <a th:href="@{/other}" class="theme-btn btn-style-one"><span
+                            class="btn-title">Как их сделать?</span></a>
                 </div>
             </div>
-
             <div class="row clearfix">
                 <div class="offers-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner">
@@ -565,7 +540,7 @@
                                 </div>
                                 <h4>Поиск</h4>
                                 <div class="text">Найдите понравившееся жильё.</div>
-                                <a href="" class="over-link"></a>
+                                <a th:href="@{/other}" class="over-link"></a>
                             </div>
                         </div>
                         <div class="offer-block">
@@ -576,7 +551,7 @@
                                 </div>
                                 <h4>Бронирование</h4>
                                 <div class="text">Нашли подходящий вариант? Чудесно! Бронируйте!</div>
-                                <a href="" class="over-link"></a>
+                                <a th:href="@{/other}" class="over-link"></a>
                             </div>
                         </div>
                         <div class="offer-block">
@@ -589,7 +564,7 @@
                                 <div class="text">Берите необходимые вещи, отличное настроение и вперёд к новым
                                     открытиям.
                                 </div>
-                                <a href="" class="over-link"></a>
+                                <a th:href="@{/other}" class="over-link"></a>
                             </div>
                         </div>
                     </div>
@@ -608,10 +583,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
-
     <!--Featured Section-->
     <section class="featured-section">
         <div class="pattern-top"></div>
@@ -627,7 +600,7 @@
                             <div class="text">Только по Вашим правилам.
                             </div>
                             <div class="link-box">
-                                <a href="" class="theme-btn btn-style-one"><span
+                                <a th:href="@{/other}" class="theme-btn btn-style-one"><span
                                         class="btn-title">Открыть</span></a>
                             </div>
                         </div>
@@ -636,7 +609,7 @@
                     <div class="image-column col-lg-6 col-md-12 col-sm-12">
                         <div class="inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                             <div class="image-box">
-                                <figure class="image"><a href="#"><img src="images/resource/europe.jpg" alt="europe"
+                                <figure class="image"><a th:href="@{/other}"><img src="images/resource/europe.jpg" alt="europe"
                                                                        title=""></a></figure>
                             </div>
                         </div>
@@ -652,7 +625,7 @@
                             <div class="text">Только лучшие воспоминания.
                             </div>
                             <div class="link-box">
-                                <a href="" class="theme-btn btn-style-one"><span
+                                <a th:href="@{/other}" class="theme-btn btn-style-one"><span
                                         class="btn-title">Покорить</span></a>
                             </div>
                         </div>
@@ -661,7 +634,7 @@
                     <div class="image-column col-lg-6 col-md-12 col-sm-12">
                         <div class="inner wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
                             <div class="image-box">
-                                <figure class="image"><a href="#"><img src="images/resource/asia.jpg" alt="asia"
+                                <figure class="image"><a th:href="@{/other}"><img src="images/resource/asia.jpg" alt="asia"
                                                                        title=""></a></figure>
                             </div>
                         </div>
@@ -670,7 +643,6 @@
             </div>
         </div>
     </section>
-
     <!--Video Section-->
     <section class="video-section">
         <div class="image-layer" style="background-image: url(images/background/fonbehindvideo.jpg);"></div>
@@ -683,7 +655,6 @@
             </div>
         </div>
     </section>
-
     <!--Blog Section-->
     <section class="testimonials-section">
         <span class="dotted-pattern dotted-pattern-3"></span>
@@ -692,7 +663,6 @@
             <div class="sec-title centered">
                 <h2>Блоги путешественников</h2>
             </div>
-
             <div class="carousel-box">
                 <div class="testimonial-carousel owl-theme owl-carousel">
                     <div class="testimonial-block">
@@ -705,7 +675,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="info">
                                 <div class="image"><img src="images/resource/alexandersemenov.png" alt="photo"></div>
                                 <div class="name">Саша Семёнов</div>
@@ -726,7 +695,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="info">
                                 <div class="image"><img src="images/resource/usachev.jpg" alt="photo"></div>
                                 <div class="name">Руслан Усачев</div>
@@ -746,7 +714,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="info">
                                 <div class="image"><img src="images/resource/huntington.jpg" alt=""></div>
                                 <div class="name">Foster Huntington</div>
@@ -767,7 +734,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="info">
                                 <div class="image"><img src="images/resource/bkindler.jpg" alt=""></div>
                                 <div class="name">Björn Kindler</div>
@@ -787,7 +753,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="info">
                                 <div class="image"><img src="images/resource/dmitriev.jpg" alt=""></div>
                                 <div class="name">Дмитрий Дмитриев</div>
@@ -829,7 +794,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="info">
                                 <div class="image"><img src="images/resource/kondrashov.jpg" alt=""></div>
                                 <div class="name">Александр Кондрашов</div>
@@ -849,8 +813,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="info">
                                 <div class="image"><img src="images/resource/narchuk.jpg" alt=""></div>
                                 <div class="name">Андрей Нарчук</div>
@@ -870,7 +832,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="info">
                             <div class="image"><img src="images/resource/shigapov.png" alt=""></div>
                             <div class="name">Артур Шигапов</div>
@@ -882,10 +843,8 @@
                 </div>
             </div>
         </div>
-
 </div>
 </section>
-
 <!--House Section-->
 <section class="news-section">
     <div class="pattern-top"></div>
@@ -895,7 +854,7 @@
                 <h2>Дома, <br>которые нравятся гостям </h2>
             </div>
             <div class="link-box">
-                <a href="" class="theme-btn btn-style-one"><span class="btn-title">View All Post</span></a>
+                <a th:href="@{/other}" class="theme-btn btn-style-one"><span class="btn-title">Смотреть все</span></a>
             </div>
         </div>
         <div class="row clearfix">
@@ -950,16 +909,13 @@
         </div>
     </div>
 </section>
-
 <!-- Main Footer -->
 <footer class="main-footer">
     <div class="top-pattern-layer-dark"></div>
-
     <!--Widgets Section-->
     <div class="widgets-section">
         <div class="auto-container">
             <div class="row clearfix">
-
                 <!--Column-->
                 <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
                     <div class="footer-widget about-widget">
@@ -968,7 +924,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!--Column-->
                 <div class="column col-xl-5 col-lg-8 col-md-12 col-sm-12">
                     <div class="footer-widget links-widget">
@@ -1000,7 +955,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!--Column-->
                 <div class="column col-xl-4 col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-widget newsletter-widget">
@@ -1020,11 +974,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
     <!-- Footer Bottom -->
     <div class="footer-bottom">
         <div class="auto-container">
@@ -1037,13 +989,10 @@
             </div>
         </div>
     </div>
-
 </footer>
-
 </div>
 <!--End pagewrapper--><!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
-
 <script th:src="@{/js/jquery.js}"></script>
 <script th:src="@{/js/popper.min.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
@@ -1054,6 +1003,5 @@
 <script th:src="@{/js/appear.js}"></script>
 <script th:src="@{/js/wow.js}"></script>
 <script th:src="@{/js/custom-script.js}"></script>
-
 </body>
 </html>

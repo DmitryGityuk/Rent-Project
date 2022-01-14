@@ -55,7 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/fonts/**",
                         "/webjars/**",
                         "/index",
-                        "/owner"
+                        "/owner",
+                        "/other"
                 )
                 .permitAll()
                 .anyRequest().authenticated();

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>Жильё</title>
+    <title>SomeHomes</title>
     <!-- Stylesheets -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
+
     <!-- Responsive File -->
     <link th:href="@{/css/responsive.css}" rel="stylesheet">
 
@@ -17,8 +19,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-            crossorigin="anonymous"></script>
     <!--[if lt IE 9]>
     <script th:src="@{/js/respond.js}"></script><![endif]-->
 </head>
@@ -43,15 +43,36 @@
                     <!--Mobile Navigation Toggler-->
                     <div class="mobile-nav-toggler"><span class="icon flaticon-menu-2"></span><span
                             class="txt">Menu</span></div>
+                    <!-- Main Menu -->
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation clearfix">
+                                <li><a rel="noopener noreferrer" target="_blank" href="https://www.aviasales.ru">Авиабилеты</a>
+                                </li>
+                                <li><a rel="noopener noreferrer" target="_blank" href="https://bookingcar.eu/">Аренда
+                                    автомобилей</a></li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-
-                <div class="other-links clearfix">
-                    <div class="link-box">
-                        <a th:href="@{/addedHouse}" class="theme-btn btn-style-one"><span
-                                class="btn-title">Добавить новое жильё</span></a>
+                <div class="other-links clearfix" sec:authorize="!isAuthenticated()">
+                    <div class="info">
+                        <ul class="clearfix">
+                            <li><a th:href="@{/sign-in}"><span class="icon flaticon-padlock"></span><span class="txt">Войти</span></a>
+                            </li>
+                            <li><a th:href="@{/sign-up}"><span class="icon flaticon-user-1"></span><span class="txt">Зарегистрироваться</span></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
+                <div class="other-links clearfix" sec:authorize="isAuthenticated()">
+                    <div class="info">
+                        <ul class="clearfix">
+                            <li><a th:href="@{/profile}"><span class="icon flaticon-user"></span><span class="txt">Ваш акккаунт</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <!--End Header Upper-->
@@ -71,49 +92,35 @@
         </div><!-- End Mobile Menu -->
     </header>
     <!-- End Main Header -->
-    <!--Events Section-->
-    <section class="events-section">
+    <!-- Banner Section -->
+    <section class="page-banner ext-banner">
+        <div class="image-layer" style="background-image:url(images/main-slider/tokyo.jpg);"></div>
+        <div class="banner-bottom-pattern"></div>
+        <div class="banner-inner">
+            <div class="auto-container">
+                <div class="inner-container clearfix">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Banner Section -->
+    <!--Pages Section-->
+    <section class="wellness-spa">
+        <span class="dotted-pattern dotted-pattern-3"></span>
+        <span class="tri-pattern tri-pattern-3"></span>
         <div class="auto-container">
-            <div class="events-box">
-                <!--House-->
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms"
-                     th:each="house : ${houses}">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img alt="" title="">
-                            </figure>
-                            <div class="image-layer"
-                                 style="background-image: url(images/resource/featured-image-41.jpg);"></div>
-                            <a class="overlink" th:href="'/house/' + ${house.id}"></a>
-                        </div>
-                        <div class="content-box">
-                            <h4 th:text="${house.houseName}"/>
-                            <div class="post-meta">
-                                <span th:text="${house.location}"></span>
-                            </div>
-                            <div class="text" th:text="${house.description}"/>
-                            <div class="link-box"><a th:href="'/house/' + ${house.id}"
-                                                     class="theme-btn btn-style-one"><span
-                                    class="btn-title">Редактировать</span></a></div>
-                            <br/>
-                            <div class="link-box"><a th:href="'/uploadPhoto/' + ${house.id}"
-                                                     class="theme-btn btn-style-one"><span
-                                    class="btn-title">Добавить фотографии</span></a></div>
-                            <br/>
-                            <div class="link-box"><a th:href="'/house/delete/' + ${house.id}"
-                                                     class="theme-btn btn-danger"><span
-                                    class="btn-title">Удалить</span></a></div>
-                        </div>
+            <div class="upper-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div class="upper-inner">
+                    <div class="circles">
+                        <div class="c-1"></div>
+                        <div class="c-2"></div>
+                    </div>
+                    <h2>Страница на разработке</h2>
+                    <div class="hours">Это демо версия. Скоро здесь будет новая страница</div>
+                    <div class="link-box">
+                        <a th:href="@{/}" class="theme-btn btn-style-one"><span class="btn-title">Понятно</span></a>
                     </div>
                 </div>
-                <footer class="pagination">
-                    Всего объектов [[${totalHouses}]] : Страница [[${currentPage}]] из [[${totalPages}]]
-                    &nbsp; &nbsp; - &nbsp;
-                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                        <a th:href="@{'/houses/page/' + ${i}}">[[${i}]]</a>
-                         &nbsp; &nbsp;
-                    </span>
-                </footer>
             </div>
         </div>
     </section>
@@ -128,7 +135,7 @@
                     <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
                         <div class="footer-widget about-widget">
                             <div class="logo">
-                                <a href="#"><img src="images/footer-logo.png" alt=""></a>
+                                <a th:href="@{/}"><img src="images/footer-logo.png" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -158,7 +165,6 @@
                                             <li class="email"><a th:href="@{/}">info@somehomes.com</a></li>
                                         </ul>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -182,7 +188,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

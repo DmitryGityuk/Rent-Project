@@ -45,5 +45,10 @@ public class MainController {
     public String logoutSuccessfulPage() {
         return "index";
     }
+
+    @GetMapping("/other")
+    public String otherPage(){
+        return "simplePage";
+    }
 }
 

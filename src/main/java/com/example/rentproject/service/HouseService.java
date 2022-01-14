@@ -3,6 +3,9 @@ package com.example.rentproject.service;
 import com.example.rentproject.models.House;
 import com.example.rentproject.models.User;
 import com.example.rentproject.repository.HouseRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +46,10 @@ public class HouseService {
         house.setDescription(house.getDescription());
         house.setHouseIsReserved(false);
         houseRepository.save(house);
+    }
+
+    public Page<House> findPage(int pageNumber){
+        Pageable pageable = PageRequest.of(pageNumber -1, 2);
+        return houseRepository.findAll(pageable);
     }
 }

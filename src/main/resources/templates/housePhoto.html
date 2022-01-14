@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="utf-8">
     <title>Жильё</title>
     <!-- Stylesheets -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
-    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <!--    <link th:href="@{/css/style.css}" rel="stylesheet">-->
     <!-- Responsive File -->
     <link th:href="@{/css/responsive.css}" rel="stylesheet">
 
@@ -28,95 +28,38 @@
     <div class="preloader">
         <div class="icon"></div>
     </div>
-    <!-- Main Header -->
-    <header class="main-header header-style-one">
-        <!-- Header Upper -->
-        <div class="header-upper">
-            <div class="inner-container clearfix">
-                <!--Logo-->
-                <div class="logo-box">
-                    <div class="logo"><a th:href="@{/}" title="SomeHomes-logo"><img src="images/logo.png"
-                                                                                    alt="SomeHomes"
-                                                                                    title="SomeHomes-logo"></a></div>
-                </div>
-                <div class="nav-outer clearfix">
-                    <!--Mobile Navigation Toggler-->
-                    <div class="mobile-nav-toggler"><span class="icon flaticon-menu-2"></span><span
-                            class="txt">Menu</span></div>
-                </div>
-
-                <div class="other-links clearfix">
-                    <div class="link-box">
-                        <a th:href="@{/addedHouse}" class="theme-btn btn-style-one"><span
-                                class="btn-title">Добавить новое жильё</span></a>
-                    </div>
-                </div>
-
-            </div>
+    <!--Offers Section-->
+    <section class="packages-section">
+        <div class="title-box">
+            <h2>Последний шаг</h2>
         </div>
-        <!--End Header Upper-->
-        <!-- Mobile Menu  -->
-        <div class="mobile-menu">
-            <div class="close-btn"><span class="icon flaticon-targeting-cross"></span></div>
-            <div class="menu-backdrop"></div>
-            <div class="nav-logo"><a th:href="@{/}"><img src="images/nav-logo.png" alt="" title=""></a></div>
-            <nav class="menu-box">
-                <div class="menu-outer">
-                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
-            </nav>
-            <div class="nav-bottom">
-                <div class="copyright">SomeHomes &copy; 2021 All Right Reserved</div>
-                <!--Social Links-->
-            </div>
-        </div><!-- End Mobile Menu -->
-    </header>
-    <!-- End Main Header -->
-    <!--Events Section-->
-    <section class="events-section">
         <div class="auto-container">
-            <div class="events-box">
-                <!--House-->
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms"
-                     th:each="house : ${houses}">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img alt="" title="">
-                            </figure>
-                            <div class="image-layer"
-                                 style="background-image: url(images/resource/featured-image-41.jpg);"></div>
-                            <a class="overlink" th:href="'/house/' + ${house.id}"></a>
-                        </div>
-                        <div class="content-box">
-                            <h4 th:text="${house.houseName}"/>
-                            <div class="post-meta">
-                                <span th:text="${house.location}"></span>
-                            </div>
-                            <div class="text" th:text="${house.description}"/>
-                            <div class="link-box"><a th:href="'/house/' + ${house.id}"
-                                                     class="theme-btn btn-style-one"><span
-                                    class="btn-title">Редактировать</span></a></div>
-                            <br/>
-                            <div class="link-box"><a th:href="'/uploadPhoto/' + ${house.id}"
-                                                     class="theme-btn btn-style-one"><span
-                                    class="btn-title">Добавить фотографии</span></a></div>
-                            <br/>
-                            <div class="link-box"><a th:href="'/house/delete/' + ${house.id}"
-                                                     class="theme-btn btn-danger"><span
-                                    class="btn-title">Удалить</span></a></div>
-                        </div>
-                    </div>
+            <!--Mixit Galery-->
+            <div class="mixit-gallery filter-gallery">
+                <div class="filters clearfix">
+                    <h4>Добавьте фотографии вашего жилья</h4>
                 </div>
-                <footer class="pagination">
-                    Всего объектов [[${totalHouses}]] : Страница [[${currentPage}]] из [[${totalPages}]]
-                    &nbsp; &nbsp; - &nbsp;
-                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                        <a th:href="@{'/houses/page/' + ${i}}">[[${i}]]</a>
-                         &nbsp; &nbsp;
-                    </span>
-                </footer>
+                <div class="filter-list ">
+                    <form class="form-horizontal" role="form"  th:method="post"
+                          enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="photo">Загрузить фото</label>
+                            <div class="col-lg-6">
+                                <input type="file" class="form-control" id="photo" name="photo"
+                                       placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button type="submit" class="btn btn-primary">Добавить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
+    <!-- Main Footer -->
     <!-- Main Footer -->
     <footer class="main-footer">
         <div class="top-pattern-layer-dark"></div>
@@ -154,11 +97,12 @@
                                         </div>
                                         <ul class="info">
                                             <li class="address">221b, Baker Street, London, NW1 6XE, UK</li>
-                                            <li class="phone"><a href="tel:+2(351) 248-2599">+2(351) 248-2599</a></li>
-                                            <li class="email"><a th:href="@{/}">info@somehomes.com</a></li>
+                                            <li class="phone"><a href="tel:+2(351) 248-2599">+2(351) 248-2599</a>
+                                            </li>
+                                            <li class="email"><a
+                                                    href="mailto:info@somehomes.com">info@somehomes.com</a></li>
                                         </ul>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -175,14 +119,14 @@
                                 <form method="post" th:action="@{/index}">
                                     <div class="form-group clearfix">
                                         <input type="email" name="email" value="" placeholder="Email" required>
-                                        <button type="submit" class="theme-btn btn-style-one"><span class="btn-title">Подписаться</span>
+                                        <button type="submit" class="theme-btn btn-style-one"><span
+                                                class="btn-title">Подписаться</span>
                                         </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -200,7 +144,6 @@
         </div>
     </footer>
 </div>
-<!--End pagewrapper--><!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
 <script th:src="@{/js/jquery.js}"></script>
 <script th:src="@{/js/popper.min.js}"></script>
