@@ -43,15 +43,37 @@
                     <!--Mobile Navigation Toggler-->
                     <div class="mobile-nav-toggler"><span class="icon flaticon-menu-2"></span><span
                             class="txt">Menu</span></div>
+                    <!-- Main Menu -->
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation clearfix">
+                                <li><a rel="noopener noreferrer" target="_blank" href="https://www.aviasales.ru">Авиабилеты</a>
+                                </li>
+                                <li><a rel="noopener noreferrer" target="_blank" href="https://bookingcar.eu/">Аренда
+                                    автомобилей</a></li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-
-                <div class="other-links clearfix">
-                    <div class="link-box">
-                        <a th:href="@{/addedHouse}" class="theme-btn btn-style-one"><span
-                                class="btn-title">Добавить новое жильё</span></a>
+                <div class="other-links clearfix" sec:authorize="!isAuthenticated()">
+                    <div class="info">
+                        <ul class="clearfix">
+                            <li><a th:href="@{/sign-in}"><span class="icon flaticon-padlock"></span><span class="txt">Войти</span></a>
+                            </li>
+                            <li><a th:href="@{/sign-up}"><span class="icon flaticon-user-1"></span><span class="txt">Зарегистрироваться</span></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
+                <div class="other-links clearfix" sec:authorize="isAuthenticated()">
+                    <div class="info">
+                        <ul class="clearfix">
+                            <li><a th:href="@{/profile}"><span class="icon flaticon-user"></span><span class="txt">Ваш акккаунт</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <!--End Header Upper-->
@@ -73,49 +95,30 @@
     <!-- End Main Header -->
     <!--House Section-->
     <section class="events-section">
+        <div class="filters clearfix">
+            <h4>По вашему запросу '[[${city}]]' найдено:</h4>
+        </div>
         <div class="auto-container">
             <div class="events-box">
                 <!--House-->
                 <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms"
-                     th:each="house : ${houses}">
+                     th:each="house : ${searchHouses}">
                     <div class="inner-box">
-                        <div class="image-box">
-<!--                            <figure class="image"><img alt="" title="">-->
-<!--                            </figure>-->
-                            <figure class="image"><img th:src="@{${house.mainPhoto}}" alt="Photo" title="">
-                            </figure>
-<!--                            <div class="image-layer"-->
-<!--                                 style="background-image: url(https://s3.us-east-2.amazonaws.com/dgimagebucket/1641997060141-top_996.jpg);"></div>-->
-<!--                            <a class="overlink" th:href="'/house/' + ${house.id}"></a>-->
-                        </div>
                         <div class="content-box">
                             <h4 th:text="${house.houseName}"/>
                             <div class="post-meta">
                                 <span th:text="${house.location}"></span>
                             </div>
-                            <div class="text" th:text="${house.description}"/>
-                            <div class="link-box"><a th:href="'/house/' + ${house.id}"
-                                                     class="theme-btn btn-style-one"><span
-                                    class="btn-title">Редактировать</span></a></div>
-                            <br/>
-                            <div class="link-box"><a th:href="'/uploadPhoto/' + ${house.id}"
-                                                     class="theme-btn btn-style-one"><span
-                                    class="btn-title">Добавить фотографии</span></a></div>
-                            <br/>
-                            <div class="link-box"><a th:href="'/house/delete/' + ${house.id}"
-                                                     class="theme-btn btn-danger"><span
-                                    class="btn-title">Удалить</span></a></div>
+                            <div class="post-meta">
+                                <span th:text="${house.description}"></span>
+                            </div>
+                            <div class="post-meta"> Включая налоги и сборы -
+                                <span th:text="${house.price}"></span>&nbsp;
+                                <span>руб.</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <footer class="pagination">
-                    Всего объектов [[${totalHouses}]] : Страница [[${currentPage}]] из [[${totalPages}]]
-                    &nbsp; &nbsp; - &nbsp;
-                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                        <a th:href="@{'/houses/page/' + ${i}}">[[${i}]]</a>
-                         &nbsp; &nbsp;
-                    </span>
-                </footer>
             </div>
         </div>
     </section>

@@ -23,7 +23,9 @@ public class HouseService {
             return false;
         }
         house.setHouseName(house.getHouseName());
-        house.setLocation(house.getLocation());
+        house.setCity(house.getCity());
+        house.setCountry(house.getCountry());
+        house.setLocation(house.getCity() + ", " +  house.getCountry());
         house.setPrice(house.getPrice());
         house.setRooms(house.getRooms());
         house.setGuests(house.getGuests());
@@ -37,13 +39,15 @@ public class HouseService {
 
     public void updateHouse(House house, User user) {
         house.setHouseName(house.getHouseName());
-        house.setUser(user);
-        house.setType(house.getType());
-        house.setRooms(house.getRooms());
+        house.setCity(house.getCity());
+        house.setCountry(house.getCountry());
+        house.setLocation(house.getCity() + ", " +  house.getCountry());
         house.setPrice(house.getPrice());
+        house.setRooms(house.getRooms());
         house.setGuests(house.getGuests());
-        house.setLocation(house.getLocation());
         house.setDescription(house.getDescription());
+        house.setType(house.getType());
+        house.setUser(user);
         house.setHouseIsReserved(false);
         houseRepository.save(house);
     }
@@ -51,5 +55,20 @@ public class HouseService {
     public Page<House> findPage(int pageNumber){
         Pageable pageable = PageRequest.of(pageNumber -1, 2);
         return houseRepository.findAll(pageable);
+    }
+
+    public void addMainPhoto(House house, String uploadFile) {
+        house.setHouseName(house.getHouseName());
+        house.setCity(house.getCity());
+        house.setCountry(house.getCountry());
+        house.setLocation(house.getCity() + ", " +  house.getCountry());
+        house.setPrice(house.getPrice());
+        house.setRooms(house.getRooms());
+        house.setGuests(house.getGuests());
+        house.setDescription(house.getDescription());
+        house.setType(house.getType());
+        house.setHouseIsReserved(false);
+        house.setMainPhoto(uploadFile);
+        houseRepository.save(house);
     }
 }

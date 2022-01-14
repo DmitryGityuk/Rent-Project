@@ -3,7 +3,6 @@ package com.example.rentproject.controller;
 import com.example.rentproject.models.House;
 import com.example.rentproject.models.HousePhoto;
 import com.example.rentproject.models.User;
-import com.example.rentproject.repository.HousePhotoRepository;
 import com.example.rentproject.repository.HouseRepository;
 import com.example.rentproject.service.AmazonClientService;
 import com.example.rentproject.service.HousePhotoService;
@@ -32,12 +31,6 @@ public class HouseController {
         this.amazonClient = amazonClient;
         this.photoService = photoService;
     }
-
-//    @GetMapping("/houses")
-//    public String getAllHouses(@AuthenticationPrincipal User user, Model model) {
-//        model.addAttribute("houses", houseRepository.findAll());
-//        return "houses";
-//    }
 
     @GetMapping("/houses")
     public String getAllHouses(@AuthenticationPrincipal User user, Model model) {
@@ -104,10 +97,10 @@ public class HouseController {
     @PostMapping("/uploadPhoto/{id}")
     public String uploadPhoto(@PathVariable("id") Long id,
                               @RequestParam("photo") MultipartFile file,
-                              HousePhoto photo) {
+                              House house) {
         houseRepository.findById(id).get();
         amazonClient.uploadFile(file);
-        photoService.addPhoto(amazonClient.uploadFile(file), photo, houseRepository.findById(id).get());
+        houseService.addMainPhoto(house, amazonClient.uploadFile(file));
         return "redirect:/houses";
     }
 }

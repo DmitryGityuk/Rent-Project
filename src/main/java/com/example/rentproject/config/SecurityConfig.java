@@ -56,7 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**",
                         "/index",
                         "/owner",
-                        "/other"
+                        "/other",
+                        "/searchResult"
                 )
                 .permitAll()
                 .anyRequest().authenticated();

@@ -40,9 +40,19 @@ public class House {
     @Column(name = "PRICE", nullable = false, length = 128)
     private String price;
 
-    @NotBlank(message = "Поле не может быть пустым")
-    @Column(name = "LOCATION", nullable = false, length = 300)
+    @Column(name = "LOCATION", length = 300)
     private String location;
+
+    @NotBlank(message = "Поле не может быть пустым")
+    @Column(name = "CITY", nullable = false, length = 128)
+    private String city;
+
+    @NotBlank(message = "Поле не может быть пустым")
+    @Column(name = "COUNTRY", nullable = false, length = 128)
+    private String country;
+
+    @Column(name = "main_photo", length = 300)
+    private String mainPhoto;
 
     @NotBlank(message = "Поле не может быть пустым")
     @Column(name = "DESCRIPTION", nullable = false, length = 300)

@@ -1,9 +1,6 @@
 package com.example.rentproject.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -16,7 +13,7 @@ import java.time.Instant;
 @Setter
 @RequiredArgsConstructor
 @ToString
-
+@EqualsAndHashCode
 public class RentalRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
