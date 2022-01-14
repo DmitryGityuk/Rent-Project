@@ -80,13 +80,7 @@
                      th:each="house : ${houses}">
                     <div class="inner-box">
                         <div class="image-box">
-<!--                            <figure class="image"><img alt="" title="">-->
-<!--                            </figure>-->
-                            <figure class="image"><img th:src="@{${house.mainPhoto}}" alt="Photo" title="">
-                            </figure>
-<!--                            <div class="image-layer"-->
-<!--                                 style="background-image: url(https://s3.us-east-2.amazonaws.com/dgimagebucket/1641997060141-top_996.jpg);"></div>-->
-<!--                            <a class="overlink" th:href="'/house/' + ${house.id}"></a>-->
+                            <figure><img th:src="@{${house.mainPhoto}}" alt="Photo" title=""></figure>
                         </div>
                         <div class="content-box">
                             <h4 th:text="${house.houseName}"/>
@@ -184,7 +178,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

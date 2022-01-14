@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>Результаты поиска</title>
+    <title>Жильё</title>
     <!-- Stylesheets -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
@@ -93,36 +93,133 @@
         </div><!-- End Mobile Menu -->
     </header>
     <!-- End Main Header -->
-    <!--House Section-->
-    <section class="events-section">
-        <div class="filters clearfix">
-            <h4>По вашему запросу '[[${city}]]' найдено:</h4>
+    <div class="sidebar-page-container blog-single">
+        <div class="circles-two">
+            <div class="c-1"></div>
+            <div class="c-2"></div>
         </div>
+        <span class="dotted-pattern dotted-pattern-5"></span>
+        <span class="tri-pattern tri-pattern-8"></span>
         <div class="auto-container">
-            <div class="events-box">
-                <!--House-->
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms"
-                     th:each="house : ${searchHouses}">
-                    <div class="inner-box">
-                        <div class="content-box">
-                            <h4 th:text="${house.houseName}"/>
-                            <div class="post-meta">
-                                <span th:text="${house.location}"></span>
+            <div class="row clearfix">
+                <!--Content Side-->
+                <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                    <div class="blog-content">
+                        <div class="post-details">
+                            <div class="inner-box">
+                                <div class="image-box">
+                                    <img th:src="${house.mainPhoto}" width="300" height="300" alt="photo" title="photo">
+                                </div>
+                                <div class="lower-box">
+                                    <div class="post-meta">
+                                        <ul class="clearfix">
+                                            <li><a href="#"><span th:text="${house.user.username}"></span>- Хозяин</a>
+                                            </li>
+                                            <li><a href="#"><span th:text="${house.location}"></span></a></li>
+                                            <li><a href="#"><span> Отзывы</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <h3 th:text="${house.houseName}"></h3>
+                                    <div class="text">
+                                        <p th:text="${house.description}"></p>
+                                        <ul>
+                                            <li><span th:text="${house.guests}"></span> - Максимальное количество гостей
+                                            </li>
+                                            <li><span th:text="${house.rooms}"></span> - Количество комнат</li>
+                                            <li><span th:text="${house.price}"></span>руб. - Цена за ночь</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="post-meta">
-                                <span th:text="${house.description}"></span>
+                        </div>
+                        <!--Review Area-->
+                        <div class="comments-area">
+                            <div class="comments-title">
+                                <h4>Отзывы</h4>
                             </div>
-                            <div class="post-meta"> Включая налоги и сборы -
-                                <span th:text="${house.price}"></span>&nbsp;
-                                <span>руб.</span>
+                            <div class="comment-box">
+                                <div class="comment">
+                                    <div class="author-thumb">
+                                        <figure class="thumb"><img src="images/resource/thumb-2.jpg" alt=""></figure>
+                                    </div>
+                                    <div class="info">
+                                        <div class="name">Jessica Alba</div>
+                                        <div class="date">20 Feb, 2020 At 10:30 pm</div>
+                                    </div>
+                                    <div class="text">Eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim
+                                        ad minim veniam, quis nostrud exercitation ullamco laboris.
+                                    </div>
+                                    <div class="reply-btn"><a class="theme-btn btn-style-three" href="#"><span
+                                            class="btn-title">Reply</span></a></div>
+                                </div>
                             </div>
-                            <a th:href="@{'/singleSearch/' + ${house.id}}">Смотреть</a>
+                        </div>
+                        <!--Leave Comment Form-->
+                        <div class="leave-comments">
+                            <div class="comments-title">
+                                <h4>Забронировать</h4>
+                            </div>
+                            <div class="default-form comment-form">
+                                <form method="post" action="contact.html">
+                                    <div class="row clearfix">
+                                        <div class="col-md-12 col-sm-12 form-group">
+                                            <button type="submit" class="theme-btn btn-style-one"><span
+                                                    class="btn-title">Забронировать</span></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--Sidebar Side-->
+                <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                    <aside class="sidebar blog-sidebar">
+                        <!--Sidebar Widget-->
+                        <div class="sidebar-widget gallery wow fadeInUp" data-wow-delay="0ms"
+                             data-wow-duration="1500ms">
+                            <div class="widget-inner">
+                                <div class="sidebar-title">
+                                    <h4>Фотографии</h4>
+                                </div>
+                                <div class="images clearfix">
+                                    <div class="image" th:each="photos: ${photo}">
+                                        <img th:src="${photos.photoPath}" alt=""
+                                                                        title="">
+                                    </div>
+                                    <div class="image">
+                                        <a href="images/gallery/2.jpg" class="lightbox-image"
+                                           data-fancybox="gallery"><img src="images/resource/g-thumb-2.jpg" alt=""
+                                                                        title=""></a>
+                                    </div>
+                                    <div class="image">
+                                        <a href="images/gallery/3.jpg" class="lightbox-image"
+                                           data-fancybox="gallery"><img src="images/resource/g-thumb-3.jpg" alt=""
+                                                                        title=""></a>
+                                    </div>
+                                    <div class="image">
+                                        <a href="images/gallery/4.jpg" class="lightbox-image"
+                                           data-fancybox="gallery"><img src="images/resource/g-thumb-4.jpg" alt=""
+                                                                        title=""></a>
+                                    </div>
+                                    <div class="image">
+                                        <a href="images/gallery/5.jpg" class="lightbox-image"
+                                           data-fancybox="gallery"><img src="images/resource/g-thumb-5.jpg" alt=""
+                                                                        title=""></a>
+                                    </div>
+                                    <div class="image">
+                                        <a href="images/gallery/6.jpg" class="lightbox-image"
+                                           data-fancybox="gallery"><img src="images/resource/g-thumb-6.jpg" alt=""
+                                                                        title=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- Main Footer -->
     <footer class="main-footer">
         <div class="top-pattern-layer-dark"></div>
@@ -134,7 +231,7 @@
                     <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
                         <div class="footer-widget about-widget">
                             <div class="logo">
-                                <a href="#"><img src="images/footer-logo.png" alt=""></a>
+                                <a th:href="@{/}"><img src="images/footer-logo.png" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -188,7 +285,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -206,7 +302,6 @@
         </div>
     </footer>
 </div>
-<!--End pagewrapper--><!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
 <script th:src="@{/js/jquery.js}"></script>
 <script th:src="@{/js/popper.min.js}"></script>

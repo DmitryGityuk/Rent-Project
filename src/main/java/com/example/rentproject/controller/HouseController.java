@@ -57,11 +57,12 @@ public class HouseController {
     }
 
     @PostMapping("/addedHouse")
-    public String regHouse(@ModelAttribute("house") @Valid House house, BindingResult bindingResult, Model model, @AuthenticationPrincipal User user) {
+    public String regHouse(@ModelAttribute("house") @Valid House house, @RequestParam("photo") MultipartFile file, BindingResult bindingResult, Model model, @AuthenticationPrincipal User user) {
+        amazonClient.uploadFile(file);
         if (bindingResult.hasErrors()) {
             return "houseInfo";
         }
-        if (!houseService.regHouse(house, user)) {
+        if (!houseService.regHouse(house, amazonClient.uploadFile(file), user)) {
             model.addAttribute("houseError", "такое жильё уже есть");
             return "houseInfo";
         }
@@ -97,10 +98,10 @@ public class HouseController {
     @PostMapping("/uploadPhoto/{id}")
     public String uploadPhoto(@PathVariable("id") Long id,
                               @RequestParam("photo") MultipartFile file,
-                              House house) {
+                              HousePhoto photo) {
         houseRepository.findById(id).get();
         amazonClient.uploadFile(file);
-        houseService.addMainPhoto(house, amazonClient.uploadFile(file));
+        photoService.addPhoto(amazonClient.uploadFile(file), photo, houseRepository.findById(id).get());
         return "redirect:/houses";
     }
 }
