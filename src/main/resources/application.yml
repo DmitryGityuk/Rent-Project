@@ -1,8 +1,4 @@
-amazonProperties:
-  endpointUrl: https://s3.us-east-2.amazonaws.com
-  accessKey: AKIAZEU4NG3KYIIHQCAB
-  secretKey: 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
-  bucketName: dgimagebucket
+
 
 spring:
   servlet:
