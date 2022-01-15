@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>Поиск</title>
+    <title>Бронирование</title>
     <!-- Stylesheets -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
@@ -55,17 +55,6 @@
                         </div>
                     </nav>
                 </div>
-                <div class="other-links clearfix" sec:authorize="!isAuthenticated()">
-                    <div class="info">
-                        <ul class="clearfix">
-                            <li><a th:href="@{/sign-in}"><span class="icon flaticon-padlock"></span><span class="txt">Войти</span></a>
-                            </li>
-                            <li><a th:href="@{/sign-up}"><span class="icon flaticon-user-1"></span><span class="txt">Зарегистрироваться</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
                 <div class="other-links clearfix" sec:authorize="isAuthenticated()">
                     <div class="info">
                         <ul class="clearfix">
@@ -104,108 +93,92 @@
             <div class="row clearfix">
                 <!--Content Side-->
                 <div class="content-side col-lg-8 col-md-12 col-sm-12">
-                    <div class="blog-content">
-                        <div class="post-details">
+                    <div class="blog-content" sec:authorize="hasAuthority('USER')">
+                        <div class="comments-title">
+                            <h4>Ваши бронирования</h4>
+                        </div>
+                        <div class="post-details" th:each="rental: ${record}">
                             <div class="inner-box">
-                                <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
-                                    <aside class="sidebar blog-sidebar">
-                                        <!--Sidebar Widget-->
-                                        <div class="sidebar-widget gallery wow fadeInUp" data-wow-delay="0ms"
-                                             data-wow-duration="1500ms">
-                                            <div class="widget-inner">
-                                                <div class="sidebar-title">
-                                                    <h4>Фотографии</h4>
-                                                </div>
-                                                <div class="inner-box">
-                                                    <div class="image-box">
-                                                        <figure><img th:src="@{${house.mainPhoto}}" alt="Photo" title=""></figure>
+                                <div class="lower-box">
+                                    <div class="post-meta">
+                                        <ul class="clearfix">
+                                            <li><a href="#"><span th:text="${rental.house.user.username}"></span>-
+                                                Хозяин</a>
+                                            </li>
+                                            <li><span th:text="${rental.house.location}"></span></li>
+                                        </ul>
+                                    </div>
+                                    <h3 th:text="${rental.house.houseName}"></h3>
+                                    <div class="text">
+                                        Email хозяина для связи: <p th:text="${rental.house.user.userEmail}"></p>
+                                        Pin-code:<p th:text="${rental.pinCode}"></p>
+                                        <ul>
+                                            <li><span th:text="${rental.rentalDate}"></span> - Заезд
+                                            </li>
+                                            <li><span th:text="${rental.returnDate}"></span> - Выезд</li>
+                                        </ul>
+                                        <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                                            <div class="sidebar-widget gallery wow fadeInUp" data-wow-delay="0ms"
+                                                 data-wow-duration="1500ms">
+                                                <div class="widget-inner">
+                                                    <div class="sidebar-title">
+                                                        <h4>Фотографии</h4>
+                                                    </div>
+                                                    <div class="inner-box">
+                                                        <div class="image-box">
+                                                            <figure><img th:src="@{${rental.house.mainPhoto}}"
+                                                                         alt="Photo" title=""></figure>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </aside>
-                                </div>
-                                <div class="lower-box">
-                                    <div class="post-meta">
-                                        <ul class="clearfix">
-                                            <li><a href="#"><span th:text="${house.user.username}"></span>- Хозяин</a>
-                                            </li>
-                                            <li><a href="#"><span th:text="${house.location}"></span></a></li>
-                                            <li><a href="#"><span> Отзывы</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <h3 th:text="${house.houseName}"></h3>
-                                    <div class="text">
-                                        <p th:text="${house.description}"></p>
-                                        <ul>
-                                            <li><span th:text="${house.guests}"></span> - Максимальное количество гостей
-                                            </li>
-                                            <li><span th:text="${house.rooms}"></span> - Количество комнат</li>
-                                            <li><span th:text="${house.price}"></span>руб. - Цена за ночь</li>
-                                        </ul>
+                                        <li><a th:href="@{/}">На главную</a></li>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--Review Area-->
-                        <div class="comments-area">
-                            <div class="comments-title">
-                                <h4>Отзывы</h4>
-                            </div>
-                            <div class="comment-box">
-                                <div class="comment">
-                                    <div class="info">
-                                        <div class="name"></div>
-                                        <div class="date"></div>
-                                    </div>
-                                    <div class="text">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Rental-->
-                        <div class="leave-comments" sec:authorize="hasAuthority('USER')">
-                            <div class="comments-title">
-                                <h4>Забронировать</h4>
-                            </div>
-                            <form th:method="post" th:object="${record}">
-                                <div class="form-box default-form filter-form wow fadeInUp" data-wow-delay="0ms"
-                                     data-wow-duration="1500ms">
-                                    <div class="row clearfix">
-                                        <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
-                                            <div class="field-label">Заезд</div>
-                                            <div class="field-inner">
-                                                <input id="rentalDate" type="date" name="rentalDate"
-                                                       value="Jan 02. 2022" placeholder="" th:field="*{rentalDate}">
-                                                <label for="rentalDate" class="icon flaticon-down-arrow"></label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
-                                            <div class="field-label">Отъезд</div>
-                                            <div class="field-inner">
-                                                <input id="returnDate" type="date" name="returnDate"
-                                                       value="Jan 12. 2022" placeholder="" th:field="*{returnDate}">
-                                                <label for="returnDate" class="icon flaticon-down-arrow"></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="default-form comment-form">
-                                    <div class="row clearfix">
-                                        <div class="col-md-12 col-sm-12 form-group">
-                                            <button type="submit" class="theme-btn btn-style-one"><span
-                                                    class="btn-title">Забронировать</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
+                <!--                <div class="blog-content" sec:authorize="hasAuthority('OWNER')">-->
+                <!--                    <div class="comments-title">-->
+                <!--                        <h4>Предстоящие бронирования</h4>-->
+                <!--                    </div>-->
+                <!--                    <div class="post-details" >-->
+                <!--                        <div class="inner-box">-->
+                <!--                            <div class="lower-box">-->
+                <!--                                <div class="post-meta">-->
+                <!--                                    <ul class="clearfix">-->
+                <!--                                        <li><a href="#"><span ></span>- -->
+                <!--                                            Гость</a>-->
+                <!--                                        </li>-->
+                <!--                                        <li><span ></span></li>-->
+                <!--                                    </ul>-->
+                <!--                                </div>-->
+                <!--                                <h3></h3>-->
+                <!--                                <div class="text">-->
+                <!--                                    <p ></p>-->
+                <!--                                    <ul>-->
+                <!--                                        <li><span ></span> - Заезд-->
+                <!--                                        </li>-->
+                <!--                                        <li><span></span> - Выезд</li>-->
+                <!--                                    </ul>-->
+                <!--                                    <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">-->
+                <!--                                        <aside class="sidebar blog-sidebar">-->
+                <!--                                            &lt;!&ndash;Sidebar Widget&ndash;&gt;-->
+                <!--                                            <div class="sidebar-widget gallery wow fadeInUp" data-wow-delay="0ms"-->
+                <!--                                                 data-wow-duration="1500ms">-->
+                <!--                                            </div>-->
+                <!--                                        </aside>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
             </div>
-            <!--Sidebar Side-->
         </div>
     </div>
+</div>
+</div>
 </div>
 <!-- Main Footer -->
 <footer class="main-footer">
@@ -218,7 +191,7 @@
                 <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
                     <div class="footer-widget about-widget">
                         <div class="logo">
-                            <a th:href="@{/}"><img src="images/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="images/footer-logo.png" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -289,6 +262,7 @@
     </div>
 </footer>
 </div>
+<!--End pagewrapper--><!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
 <script th:src="@{/js/jquery.js}"></script>
 <script th:src="@{/js/popper.min.js}"></script>

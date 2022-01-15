@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface HousePhotoRepository extends CrudRepository<HousePhoto, Long>{
+public interface HousePhotoRepository extends CrudRepository<HousePhoto, Long> {
 
     List<HousePhoto> findAllByHouse(Long id);
 

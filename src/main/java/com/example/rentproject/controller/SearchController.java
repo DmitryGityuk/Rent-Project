@@ -40,7 +40,7 @@ public class SearchController {
     @GetMapping("/searchResult")
     public String findHome(@RequestParam("city") String city, Model model) {
         List<House> searchHouses = houseRepository.findByCity(city);
-        if (searchHouses.isEmpty()){
+        if (searchHouses.isEmpty()) {
             model.addAttribute("message", "К сожалению в этом городе объекты еще не зарегистрированы");
         }
         model.addAttribute("city", city);
@@ -56,14 +56,8 @@ public class SearchController {
     }
 
     @PostMapping("/singleSearch/{id}")
-    public String addRental(@PathVariable("id") Long id, @AuthenticationPrincipal User user, RentalRecord record, House house, Model model){
+    public String addRental(@PathVariable("id") Long id, @AuthenticationPrincipal User user, RentalRecord record, House house, Model model) {
         recordService.addNewRecord(record, user, house);
         return "redirect:/profile";
-    }
-
-    @GetMapping("/successRental")
-    public String checkRental(@PathVariable("id") Long id,Model model){
-        model.addAttribute("record", recordRepository.findById(id).get());
-        return "successRental";
     }
 }

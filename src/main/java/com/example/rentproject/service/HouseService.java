@@ -25,7 +25,7 @@ public class HouseService {
         house.setHouseName(house.getHouseName());
         house.setCity(house.getCity());
         house.setCountry(house.getCountry());
-        house.setLocation(house.getCity() + ", " +  house.getCountry());
+        house.setLocation(house.getCity() + ", " + house.getCountry());
         house.setPrice(house.getPrice());
         house.setRooms(house.getRooms());
         house.setGuests(house.getGuests());
@@ -42,7 +42,7 @@ public class HouseService {
         house.setHouseName(house.getHouseName());
         house.setCity(house.getCity());
         house.setCountry(house.getCountry());
-        house.setLocation(house.getCity() + ", " +  house.getCountry());
+        house.setLocation(house.getCity() + ", " + house.getCountry());
         house.setPrice(house.getPrice());
         house.setRooms(house.getRooms());
         house.setGuests(house.getGuests());
@@ -54,8 +54,8 @@ public class HouseService {
         houseRepository.save(house);
     }
 
-    public Page<House> findPage(int pageNumber){
-        Pageable pageable = PageRequest.of(pageNumber -1, 2);
+    public Page<House> findPage(int pageNumber) {
+        Pageable pageable = PageRequest.of(pageNumber - 1, 2);
         return houseRepository.findAll(pageable);
     }
 }

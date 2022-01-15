@@ -1,6 +1,5 @@
 package com.example.rentproject.controller;
 
-import com.example.rentproject.models.House;
 import com.example.rentproject.models.User;
 import com.example.rentproject.service.UserService;
 import org.springframework.stereotype.Controller;

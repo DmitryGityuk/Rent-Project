@@ -25,7 +25,7 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException{
+    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
         return userRepo.findUserByUserEmail(userEmail);
     }
 
@@ -94,13 +94,13 @@ public class UserService implements UserDetailsService {
         String email = user.getUserEmail();
         boolean isEmailChanged = (userFromDB.getUserEmail() != null && !userFromDB.getUserEmail().equals(email))
                 || email != null && !email.equals(userFromDB.getUserEmail());
-        if (isEmailChanged){
+        if (isEmailChanged) {
             user.setUserEmail(email);
-            if (!StringUtils.isEmpty(email)){
+            if (!StringUtils.isEmpty(email)) {
                 user.setActivationCode(UUID.randomUUID().toString());
             }
         }
-        if (!isEmailChanged){
+        if (!isEmailChanged) {
             user.setAccountIsActivated(true);
         }
         user.setPassword(EncryptedPasswordUtils.encryptedPassword(user.getPassword()));

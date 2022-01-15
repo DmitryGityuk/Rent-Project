@@ -4,7 +4,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.Instant;
 import java.util.Date;
 
 @Table(name = "rental_record", uniqueConstraints = {
@@ -22,7 +21,7 @@ public class RentalRecord {
     @Column(name = "RECORD_ID", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name = "HOUSE_ID", nullable = false)
     private House house;
 

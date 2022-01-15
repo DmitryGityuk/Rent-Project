@@ -165,7 +165,7 @@
                             <div class="text" sec:authorize="hasAuthority('USER')">Ваши бронирования.</div>
                             <div class="text" sec:authorize="hasAuthority('OWNER')"> Поступившие заявки на проживание.
                             </div>
-                        <div class="link-box"><a href="" class="theme-btn btn-style-one"><span
+                        <div class="link-box"><a th:href="@{/successRental}" class="theme-btn btn-style-one"><span
                                 class="btn-title">Смотреть</span></a></div>
                         </div>
                     </div>

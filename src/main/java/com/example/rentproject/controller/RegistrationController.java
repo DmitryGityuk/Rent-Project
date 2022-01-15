@@ -29,6 +29,9 @@ public class RegistrationController {
 
     @PostMapping("/sign-up")
     public String addNewUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
+        if (user.getPassword() != null && user.getPassword().equals(user.getConfirmPassword())) {
+            model.addAttribute("passwordError", "Пароли не совпадают");
+        }
         if (bindingResult.hasErrors()) {
             return "registration";
         }

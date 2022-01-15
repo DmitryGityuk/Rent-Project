@@ -6,11 +6,8 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.example.rentproject.models.HousePhoto;
-import com.example.rentproject.repository.HousePhotoRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
@@ -36,7 +33,7 @@ public class AmazonClientService {
     private String secretKey;
 
     @PostConstruct
-    private void initializeAmazon(){
+    private void initializeAmazon() {
         AWSCredentials credentials = new BasicAWSCredentials(this.accessKey, this.secretKey);
         this.s3Client = new AmazonS3Client(credentials);
     }
@@ -63,7 +60,7 @@ public class AmazonClientService {
         try {
             File file = convertMultiPartToFile(multipartFile);
             String fileName = generateFileName(multipartFile);
-            fileUrl = "https://" + bucketName  + "." + endpointUrl +  "/" + fileName;
+            fileUrl = "https://" + bucketName + "." + endpointUrl + "/" + fileName;
             uploadFileTos3bucket(fileName, file);
             file.delete();
         } catch (Exception e) {

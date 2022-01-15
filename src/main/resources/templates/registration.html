@@ -127,6 +127,7 @@
                                                                     <label for="password">Password</label>
                                                                     <span th:if="${#fields.hasErrors('password')}"
                                                                           th:errors="*{password}"></span><br/>
+                                                                    <span th:utext="${passwordError}"></span>
                                                                 </div>
                                                                 <div class="form-floating mb-3">
                                                                     <input class="form-control" type='password'

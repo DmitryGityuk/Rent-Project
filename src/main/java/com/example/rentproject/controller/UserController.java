@@ -1,6 +1,7 @@
 package com.example.rentproject.controller;
 
 import com.example.rentproject.models.User;
+import com.example.rentproject.repository.RentalRecordRepository;
 import com.example.rentproject.repository.UserRepository;
 import com.example.rentproject.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,27 +16,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
     private final UserRepository userRepository;
     private final UserService userService;
+    private final RentalRecordRepository recordRepository;
 
-    public UserController(UserRepository userRepository, UserService userService) {
+    public UserController(UserRepository userRepository, UserService userService, RentalRecordRepository recordRepository) {
         this.userRepository = userRepository;
         this.userService = userService;
+        this.recordRepository = recordRepository;
     }
 
     @GetMapping("/profile")
-    public String profileUser(@AuthenticationPrincipal User user, Model model){
+    public String profileUser(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("user", user);
         return "generalProfile";
     }
 
     @GetMapping("/updateUserInfo/{id}")
-    public String userInfo(@PathVariable("id") Long id, @AuthenticationPrincipal User user, Model model){
+    public String userInfo(@PathVariable("id") Long id, @AuthenticationPrincipal User user, Model model) {
         model.addAttribute("user", userRepository.findById(id).get());
         return "profileUserInfo";
     }
 
     @PostMapping("/updateUserInfo/{id}")
-    public String updateUserInfo(@PathVariable("id") Long id, @ModelAttribute("user") @AuthenticationPrincipal User user){
+    public String updateUserInfo(@PathVariable("id") Long id, @ModelAttribute("user") @AuthenticationPrincipal User user) {
         userService.updateUser(id, user);
         return "redirect:/profile";
+    }
+
+    @GetMapping("/successRental")
+    public String checkRental(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("record", recordRepository.findAllByUser(user));
+        return "successRental";
     }
 }

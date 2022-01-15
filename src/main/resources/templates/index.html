@@ -857,51 +857,18 @@
             </div>
         </div>
         <div class="row clearfix">
-            <!--News Block-->
-            <div class="news-block col-lg-4 col-md-6 col-sm-12">
+            <!--House Block-->
+            <div class="news-block col-lg-4 col-md-6 col-sm-12" th:each="house : ${house}">
                 <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="image-box">
-                        <figure class="image"><a href=""><img src="images/resource/news-image-1.jpg"
-                                                                              alt="" title=""></a></figure>
+                        <figure><img th:src="@{${house.mainPhoto}}" alt="Photo" title=""></figure>
                     </div>
                     <div class="post-meta">
-                        <span>от (здесь цена)</span>
+                        <li><span th:text="${house.price}"></span>руб. - Цена за ночь</li>
                     </div>
-                    <h4><a href="">(Название отеля)</a></h4>
+                    <h4 th:text="${house.houseName}"/>
                     <div class="link-box">
-                        <a href=""><span class="icon flaticon-arrows-10"></span>Смотреть предложения</a>
-                    </div>
-                </div>
-            </div>
-            <!--News Block-->
-            <div class="news-block col-lg-4 col-md-6 col-sm-12">
-                <div class="inner-box wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
-                    <div class="image-box">
-                        <figure class="image"><a href=""><img src="images/resource/news-image-2.jpg"
-                                                                              alt="" title=""></a></figure>
-                    </div>
-                    <div class="post-meta">
-                        <span>от (здесь цена)</span>
-                    </div>
-                    <h4><a href="">(Название отеля)</a></h4>
-                    <div class="link-box">
-                        <a href=""><span class="icon flaticon-arrows-10"></span>Смотреть предложения</a>
-                    </div>
-                </div>
-            </div>
-            <!--News Block-->
-            <div class="news-block col-lg-4 col-md-6 col-sm-12">
-                <div class="inner-box wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-                    <div class="image-box">
-                        <figure class="image"><a href=""><img src="images/resource/news-image-3.jpg"
-                                                                              alt="" title=""></a></figure>
-                    </div>
-                    <div class="post-meta">
-                        <span>от (здесь цена)</span>
-                    </div>
-                    <h4><a href="">(Название отеля, нутри ссылка на все дома этого города)</a></h4>
-                    <div class="link-box">
-                        <a href=""><span class="icon flaticon-arrows-10"></span>Смотреть предложения</a>
+                        <a th:href="@{'/singleSearch/' + ${house.id}}"><span class="icon flaticon-arrows-10"></span>Смотреть предложения</a>
                     </div>
                 </div>
             </div>
