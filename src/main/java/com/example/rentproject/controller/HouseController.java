@@ -76,9 +76,10 @@ public class HouseController {
     }
 
     @PostMapping("/house/{id}")
-    public String updateHouse(@PathVariable("id") Long id, House house, @AuthenticationPrincipal User user) {
+    public String updateHouse(@PathVariable("id") Long id, House house, @RequestParam("photo") MultipartFile photo, @AuthenticationPrincipal User user) {
+        amazonClient.uploadFile(photo);
         houseRepository.findById(id).get();
-        houseService.updateHouse(house, user);
+        houseService.updateHouse(house, amazonClient.uploadFile(photo), user);
         return "redirect:/houses";
     }
 

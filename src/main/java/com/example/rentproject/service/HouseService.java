@@ -39,7 +39,7 @@ public class HouseService {
         return true;
     }
 
-    public void updateHouse(House house, User user) {
+    public void updateHouse(House house, String photo, User user) {
         house.setHouseName(house.getHouseName());
         house.setCity(house.getCity());
         house.setCountry(house.getCountry());
@@ -50,6 +50,7 @@ public class HouseService {
         house.setDescription(house.getDescription());
         house.setType(house.getType());
         house.setUser(user);
+        house.setMainPhoto(photo);
         house.setHouseIsReserved(false);
         houseRepository.save(house);
     }
