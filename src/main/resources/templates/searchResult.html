@@ -104,6 +104,9 @@
                 <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms"
                      th:each="house : ${searchHouses}">
                     <div class="inner-box">
+                        <div class="image-box">
+                            <figure><img th:src="@{${house.mainPhoto}}" alt="Photo" title=""></figure>
+                        </div>
                         <div class="content-box">
                             <h4 th:text="${house.houseName}"/>
                             <div class="post-meta">

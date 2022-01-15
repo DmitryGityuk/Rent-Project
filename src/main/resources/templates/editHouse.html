@@ -41,7 +41,7 @@
                 </div>
                 <div class="filter-list ">
                     <form class="form-horizontal" role="form" th:method="post"
-                          th:object="${house}"
+                          th:object="${house}" enctype="multipart/form-data"
                     >
                         <div class="form-group">
                             <label class="col-lg-2 control-label" for="houseName">Название</label>
@@ -53,8 +53,13 @@
                         <div class="form-group">
                             <label class="col-lg-2 control-label" for="type">Какое у вас жилье?</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="type" name="type"
-                                       placeholder="тип жилья" th:field="*{type}">
+                                <select class="form-control" id="type" name="type"
+                                        placeholder="тип жилья" th:field="*{type}">
+                                    <option value="apartment">Квартира</option>
+                                    <option value="house">Дом</option>
+                                </select>
+                                <span th:if="${#fields.hasErrors('type')}"
+                                      th:errors="*{type}"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -74,10 +79,21 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label" for="location">Где расположено ваше жильё?</label>
+                            <label class="col-lg-2 control-label" for="city">В каком городе расположено ваше жильё?</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="location" name="location" placeholder=" "
-                                       th:field="*{location}">
+                                <input type="text" class="form-control" id="city" name="city" placeholder=" "
+                                       th:field="*{city}">
+                                <span th:if="${#fields.hasErrors('city')}"
+                                      th:errors="*{city}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="country">В какой стране расположено ваше жильё?</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="country" name="country" placeholder=" "
+                                       th:field="*{country}">
+                                <span th:if="${#fields.hasErrors('country')}"
+                                      th:errors="*{country}"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -93,6 +109,13 @@
                                 <input type="text" class="form-control" id="description" name="description"
                                        placeholder="например: Объект в многоквартирном доме или комплексе"
                                        th:field="*{description}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="photo">Загрузить главное фото</label>
+                            <div class="col-lg-6">
+                                <input type="file" class="form-control" id="photo" name="photo"
+                                       placeholder="" required>
                             </div>
                         </div>
                         <div class="form-group">

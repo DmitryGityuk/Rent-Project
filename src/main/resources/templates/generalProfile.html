@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml"
+      lang="ru">
 <head>
     <meta charset="utf-8">
     <title>SomeHomes</title>
@@ -40,8 +41,8 @@
                 <!--Logo-->
                 <div class="logo-box">
                     <div class="logo"><a th:href="@{/}" title="SomeHomes-logo"><img src="images/logo.png"
-                                                                                       alt="SomeHomes"
-                                                                                       title="SomeHomes-logo"></a></div>
+                                                                                    alt="SomeHomes"
+                                                                                    title="SomeHomes-logo"></a></div>
                 </div>
                 <div class="nav-outer clearfix">
                     <!--Mobile Navigation Toggler-->
@@ -122,24 +123,26 @@
                             <h4>Персональная Информация</h4>
                             <div class="text">Обновите свои данные.
                             </div>
-                            <div class="link-box"><a th:href="@{updateUserInfo/{id}(id=${user.getId()})}" class="theme-btn btn-style-one"><span
+                            <div class="link-box"><a th:href="@{updateUserInfo/{id}(id=${user.getId()})}"
+                                                     class="theme-btn btn-style-one"><span
                                     class="btn-title">Редактировать</span></a></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" sec:authorize="hasAuthority('OWNER')">
+                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms"
+                     sec:authorize="hasAuthority('OWNER')">
                     <div class="inner-box">
                         <div class="image-box">
                             <figure class="image"><img src="images/resource/featured-image-41.jpg" alt="" title="">
                             </figure>
                             <div class="image-layer"
                                  style="background-image: url(images/resource/featured-image-41.jpg);"></div>
-                            <a class="overlink" ></a>
+                            <a class="overlink"></a>
                         </div>
                         <div class="content-box">
                             <h4>Ваше жильё</h4>
-                            <div class="text">.
+                            <div class="text">Размещённые объявления
                             </div>
                             <div class="link-box"><a th:href="@{/houses}" class="theme-btn btn-style-one"><span
                                     class="btn-title">Редактировать</span></a></div>
@@ -159,132 +162,136 @@
                         </div>
                         <div class="content-box">
                             <h4>Бронирования</h4>
-                            <div class="text">Ваши бронирования.
+                            <div class="text" sec:authorize="hasAuthority('USER')">Ваши бронирования.</div>
+                            <div class="text" sec:authorize="hasAuthority('OWNER')"> Поступившие заявки на проживание.
                             </div>
-                            <div class="link-box"><a href="" class="theme-btn btn-style-one"><span
-                                    class="btn-title">Смотреть</span></a></div>
+                        <div class="link-box"><a href="" class="theme-btn btn-style-one"><span
+                                class="btn-title">Смотреть</span></a></div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!--Review-->
-                <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/featured-image-43.jpg" alt="" title="">
-                            </figure>
-                            <div class="image-layer"
-                                 style="background-image: url(images/resource/featured-image-43.jpg);"></div>
-                            <a class="overlink" href=""></a>
-                        </div>
-                        <div class="content-box">
-                            <h4>Отзывы</h4>
-                            <div class="text">Отзывы о проживании.
-                            </div>
-                            <div class="link-box"><a href="" class="theme-btn btn-style-one"><span
-                                    class="btn-title">Смотреть</span></a></div>
-                        </div>
+            <!--Review-->
+            <div class="event-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <figure class="image"><img src="images/resource/featured-image-43.jpg" alt="" title="">
+                        </figure>
+                        <div class="image-layer"
+                             style="background-image: url(images/resource/featured-image-43.jpg);"></div>
+                        <a class="overlink" href=""></a>
+                    </div>
+                    <div class="content-box">
+                        <h4>Отзывы</h4>
+                        <div class="text" sec:authorize="hasAuthority('USER')"> Ваши отзывы о проживании.</div>
+                        <div class="text" sec:authorize="hasAuthority('OWNER')"> Отзывы о проживании в вашем жилье.</div>
+                    <div class="link-box"><a href="" class="theme-btn btn-style-one"><span
+                            class="btn-title">Смотреть</span></a></div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                        <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Выйти</a>
-                    </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Выйти</a>
                 </div>
             </div>
         </div>
     </section>
+</div>
+</div>
+</section>
 
-    <!-- Main Footer -->
-    <footer class="main-footer">
-        <div class="top-pattern-layer-dark"></div>
+<!-- Main Footer -->
+<footer class="main-footer">
+    <div class="top-pattern-layer-dark"></div>
 
-        <!--Widgets Section-->
-        <div class="widgets-section">
-            <div class="auto-container">
-                <div class="row clearfix">
+    <!--Widgets Section-->
+    <div class="widgets-section">
+        <div class="auto-container">
+            <div class="row clearfix">
 
-                    <!--Column-->
-                    <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
-                        <div class="footer-widget about-widget">
-                            <div class="logo">
-                                <a href="#"><img src="images/footer-logo.png" alt=""></a>
-                            </div>
+                <!--Column-->
+                <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
+                    <div class="footer-widget about-widget">
+                        <div class="logo">
+                            <a href="#"><img src="images/footer-logo.png" alt=""></a>
                         </div>
                     </div>
+                </div>
 
-                    <!--Column-->
-                    <div class="column col-xl-5 col-lg-8 col-md-12 col-sm-12">
-                        <div class="footer-widget links-widget">
-                            <div class="widget-content">
-                                <div class="row clearfix">
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="widget-title">
-                                            <h4>Навигация</h4>
-                                        </div>
-                                        <ul class="links">
-                                            <li><a th:href="@{/}">На главную</a></li>
-                                            <li><a th:href="@{/sign-up}">Зарегистрироваться</a></li>
-                                            <li><a th:href="@{/sign-in}" >Войти</a></li>
-                                            <li><a th:href="@{/contact}">Связаться с нами</a></li>
-                                        </ul>
+                <!--Column-->
+                <div class="column col-xl-5 col-lg-8 col-md-12 col-sm-12">
+                    <div class="footer-widget links-widget">
+                        <div class="widget-content">
+                            <div class="row clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="widget-title">
+                                        <h4>Навигация</h4>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="widget-title">
-                                            <h4>Контакты</h4>
-                                        </div>
-                                        <ul class="info">
-                                            <li class="address">221b, Baker Street, London, NW1 6XE, UK</li>
-                                            <li class="phone"><a href="tel:+2(351) 248-2599">+2(351) 248-2599</a>
-                                            </li>
-                                            <li class="email"><a
-                                                    href="mailto:info@somehomes.com">info@somehomes.com</a></li>
-                                        </ul>
-                                    </div>
-
+                                    <ul class="links">
+                                        <li><a th:href="@{/}">На главную</a></li>
+                                        <li><a th:href="@{/sign-up}">Зарегистрироваться</a></li>
+                                        <li><a th:href="@{/sign-in}">Войти</a></li>
+                                        <li><a th:href="@{/contact}">Связаться с нами</a></li>
+                                    </ul>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Column-->
-                    <div class="column col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-widget newsletter-widget">
-                            <div class="widget-title">
-                                <h4>Новости</h4>
-                            </div>
-                            <div class="text">Подписаться на рассылку новостной ленты</div>
-                            <!--Newsletter-->
-                            <div class="newsletter-form">
-                                <form method="post" th:action="@{/index}">
-                                    <div class="form-group clearfix">
-                                        <input type="email" name="email" value="" placeholder="Email" required>
-                                        <button type="submit" class="theme-btn btn-style-one"><span class="btn-title">Подписаться</span>
-                                        </button>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="widget-title">
+                                        <h4>Контакты</h4>
                                     </div>
-                                </form>
+                                    <ul class="info">
+                                        <li class="address">221b, Baker Street, London, NW1 6XE, UK</li>
+                                        <li class="phone"><a href="tel:+2(351) 248-2599">+2(351) 248-2599</a>
+                                        </li>
+                                        <li class="email"><a
+                                                href="mailto:info@somehomes.com">info@somehomes.com</a></li>
+                                    </ul>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-
                 </div>
-            </div>
-        </div>
 
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-            <div class="auto-container">
-                <div class="inner clearfix">
-                    <div class="copyright"> 2021 SomeHomes - All Right Reserved</div>
-                    <div class="bottom-links">
-                        <a href="#">Правила и условия</a> &ensp;|&ensp; <a href="#">
-                        Политика конфиденциальности</a>
+                <!--Column-->
+                <div class="column col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-widget newsletter-widget">
+                        <div class="widget-title">
+                            <h4>Новости</h4>
+                        </div>
+                        <div class="text">Подписаться на рассылку новостной ленты</div>
+                        <!--Newsletter-->
+                        <div class="newsletter-form">
+                            <form method="post" th:action="@{/index}">
+                                <div class="form-group clearfix">
+                                    <input type="email" name="email" value="" placeholder="Email" required>
+                                    <button type="submit" class="theme-btn btn-style-one"><span class="btn-title">Подписаться</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
+    </div>
 
-    </footer>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <div class="inner clearfix">
+                <div class="copyright"> 2021 SomeHomes - All Right Reserved</div>
+                <div class="bottom-links">
+                    <a href="#">Правила и условия</a> &ensp;|&ensp; <a href="#">
+                    Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
 </div>
 <!--End pagewrapper--><!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>

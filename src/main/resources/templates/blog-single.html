@@ -107,9 +107,6 @@
                     <div class="blog-content">
                         <div class="post-details">
                             <div class="inner-box">
-                                <div class="image-box">
-                                    <img th:src="${house.mainPhoto}" width="300" height="300" alt="photo" title="photo">
-                                </div>
                                 <div class="lower-box">
                                     <div class="post-meta">
                                         <ul class="clearfix">
@@ -139,9 +136,6 @@
                             </div>
                             <div class="comment-box">
                                 <div class="comment">
-                                    <div class="author-thumb">
-                                        <figure class="thumb"><img src="images/resource/thumb-2.jpg" alt=""></figure>
-                                    </div>
                                     <div class="info">
                                         <div class="name">Jessica Alba</div>
                                         <div class="date">20 Feb, 2020 At 10:30 pm</div>
@@ -154,8 +148,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Leave Comment Form-->
-                        <div class="leave-comments">
+                        <!--Rental-->
+                        <div class="leave-comments"  sec:authorize="hasAuthority('USER')">
                             <div class="comments-title">
                                 <h4>Забронировать</h4>
                             </div>
@@ -182,35 +176,9 @@
                                 <div class="sidebar-title">
                                     <h4>Фотографии</h4>
                                 </div>
-                                <div class="images clearfix">
-                                    <div class="image" th:each="photos: ${photo}">
-                                        <img th:src="${photos.photoPath}" alt=""
-                                                                        title="">
-                                    </div>
-                                    <div class="image">
-                                        <a href="images/gallery/2.jpg" class="lightbox-image"
-                                           data-fancybox="gallery"><img src="images/resource/g-thumb-2.jpg" alt=""
-                                                                        title=""></a>
-                                    </div>
-                                    <div class="image">
-                                        <a href="images/gallery/3.jpg" class="lightbox-image"
-                                           data-fancybox="gallery"><img src="images/resource/g-thumb-3.jpg" alt=""
-                                                                        title=""></a>
-                                    </div>
-                                    <div class="image">
-                                        <a href="images/gallery/4.jpg" class="lightbox-image"
-                                           data-fancybox="gallery"><img src="images/resource/g-thumb-4.jpg" alt=""
-                                                                        title=""></a>
-                                    </div>
-                                    <div class="image">
-                                        <a href="images/gallery/5.jpg" class="lightbox-image"
-                                           data-fancybox="gallery"><img src="images/resource/g-thumb-5.jpg" alt=""
-                                                                        title=""></a>
-                                    </div>
-                                    <div class="image">
-                                        <a href="images/gallery/6.jpg" class="lightbox-image"
-                                           data-fancybox="gallery"><img src="images/resource/g-thumb-6.jpg" alt=""
-                                                                        title=""></a>
+                                <div class="inner-box">
+                                    <div class="image-box">
+                                            <figure><img th:src="@{${house.mainPhoto}}" alt="Photo" title=""></figure>
                                     </div>
                                 </div>
                             </div>
