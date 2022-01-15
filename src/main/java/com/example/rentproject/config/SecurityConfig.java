@@ -57,7 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/index",
                         "/owner",
                         "/other",
-                        "/searchResult"
+                        "/searchResult",
+                        "/singleSearch/**"
                 )
                 .permitAll()
                 .anyRequest().authenticated();

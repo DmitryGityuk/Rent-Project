@@ -35,7 +35,7 @@
             <div class="inner-container clearfix">
                 <!--Logo-->
                 <div class="logo-box">
-                    <div class="logo"><a th:href="@{/}" title="SomeHomes-logo"><img src="images/logo.png"
+                    <div class="logo"><a th:href="@{/}" title="SomeHomes-logo"><img src="images/flogo.jpg"
                                                                                     alt="SomeHomes"
                                                                                     title="SomeHomes-logo"></a></div>
                 </div>
@@ -200,6 +200,23 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="form-col col-lg-6 col-md-12 col-sm-12" sec:authorize="!isAuthenticated()">
+                            <div class="inner">
+                                <div class="form-box default-form contact-form-two wow fadeInRight" data-wow-delay="0ms"
+                                     data-wow-duration="1500ms">
+                                    <h3>Войдите в аккаунт, чтобы забронировать это жилье.</h3>
+                                    <div class="info">
+                                        <ul class="clearfix">
+                                            <li><a th:href="@{/sign-in}"><span class="icon flaticon-padlock"></span><span class="txt">Войти</span></a>
+                                            </li>
+                                            <li><a th:href="@{/sign-up}"><span class="icon flaticon-user-1"></span><span class="txt">Зарегистрироваться</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -218,7 +235,7 @@
                 <div class="column col-xl-3 col-lg-12 col-md-12 col-sm-12">
                     <div class="footer-widget about-widget">
                         <div class="logo">
-                            <a th:href="@{/}"><img src="images/footer-logo.png" alt=""></a>
+                            <a th:href="@{/}"><img src="images/flogo.jpg" alt=""></a>
                         </div>
                     </div>
                 </div>
