@@ -47,7 +47,7 @@ public class MainController {
     }
 
     @GetMapping("/other")
-    public String otherPage(){
+    public String otherPage() {
         return "simplePage";
     }
 }

@@ -143,18 +143,37 @@
                                     <div class="text">Eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim
                                         ad minim veniam, quis nostrud exercitation ullamco laboris.
                                     </div>
-                                    <div class="reply-btn"><a class="theme-btn btn-style-three" href="#"><span
-                                            class="btn-title">Reply</span></a></div>
                                 </div>
                             </div>
                         </div>
                         <!--Rental-->
-                        <div class="leave-comments"  sec:authorize="hasAuthority('USER')">
+                        <div class="leave-comments" sec:authorize="hasAuthority('USER')">
                             <div class="comments-title">
                                 <h4>Забронировать</h4>
                             </div>
+                            <form th:method="post" th:object="${record}">
+                                <div class="form-box default-form filter-form wow fadeInUp" data-wow-delay="0ms"
+                                     data-wow-duration="1500ms">
+                                    <div class="row clearfix">
+                                        <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                            <div class="field-label">Заезд</div>
+                                            <div class="field-inner">
+                                                <input id="rentalDate" type="date" name="rentalDate"
+                                                       value="Jan 02. 2022" placeholder="" th:field="*{rentalDate}">
+                                                <label for="rentalDate" class="icon flaticon-down-arrow"></label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                            <div class="field-label">Отъезд</div>
+                                            <div class="field-inner">
+                                                <input id="returnDate" type="date" name="returnDate"
+                                                       value="Jan 12. 2022" placeholder="" th:field="*{returnDate}">
+                                                <label for="returnDate" class="icon flaticon-down-arrow"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <div class="default-form comment-form">
-                                <form method="post" action="contact.html">
                                     <div class="row clearfix">
                                         <div class="col-md-12 col-sm-12 form-group">
                                             <button type="submit" class="theme-btn btn-style-one"><span
@@ -178,7 +197,7 @@
                                 </div>
                                 <div class="inner-box">
                                     <div class="image-box">
-                                            <figure><img th:src="@{${house.mainPhoto}}" alt="Photo" title=""></figure>
+                                        <figure><img th:src="@{${house.mainPhoto}}" alt="Photo" title=""></figure>
                                     </div>
                                 </div>
                             </div>

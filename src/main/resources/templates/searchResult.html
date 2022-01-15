@@ -97,6 +97,7 @@
     <section class="events-section">
         <div class="filters clearfix">
             <h4>По вашему запросу '[[${city}]]' найдено:</h4>
+            <span th:utext="${message}"></span>
         </div>
         <div class="auto-container">
             <div class="events-box">
@@ -209,8 +210,8 @@
         </div>
     </footer>
 </div>
-<!--End pagewrapper--><!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
+<!--End pagewrapper-->
+<!--Scroll to top--><div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
 <script th:src="@{/js/jquery.js}"></script>
 <script th:src="@{/js/popper.min.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>

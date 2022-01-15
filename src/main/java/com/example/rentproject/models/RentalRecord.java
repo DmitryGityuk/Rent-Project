@@ -1,9 +1,11 @@
 package com.example.rentproject.models;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Date;
 
 @Table(name = "rental_record", uniqueConstraints = {
         @UniqueConstraint(name = "RENTAL_RECORD_UK", columnNames = {"USER_ID", "HOUSE_ID"})
@@ -28,11 +30,13 @@ public class RentalRecord {
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     @Column(name = "RENTAL_DATE", nullable = false)
-    private Instant rentalDate;
+    private Date rentalDate;
 
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     @Column(name = "RETURN_DATE", nullable = false)
-    private Instant returnDate;
+    private Date returnDate;
 
     @Column(name = "PIN_CODE", nullable = false, length = 4)
     private String pinCode;

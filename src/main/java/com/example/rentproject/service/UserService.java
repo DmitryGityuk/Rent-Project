@@ -52,7 +52,6 @@ public class UserService implements UserDetailsService {
                     user.getUserEmail(),
                     user.getActivationCode()
             );
-
             mailSender.sendRegistrationLetter(user.getUserEmail(), "Activation code", message);
         }
     }
@@ -110,7 +109,6 @@ public class UserService implements UserDetailsService {
         user.setFirstName(user.getFirstName());
         user.setSecondName(user.getSecondName());
         userRepo.save(user);
-
         if (isEmailChanged) {
             sendActivationCode(user);
         }
