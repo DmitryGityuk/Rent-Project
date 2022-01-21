@@ -8,8 +8,8 @@ The goal of this application is to get an in-depth feeling for the usage of the 
 * Spring Boot
 * Spring Security
 * Spring MVC
-** Thymeleaf
-** Bootstrap 
+* Thymeleaf
+* Bootstrap 
 * MySQL in memory database
 * JPA ORM (Hibernate impl.)
 
