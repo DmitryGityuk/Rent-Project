@@ -21,7 +21,7 @@ public class RentalRecord {
     @Column(name = "RECORD_ID", nullable = false)
     private Long id;
 
-    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "HOUSE_ID", nullable = false)
     private House house;
 

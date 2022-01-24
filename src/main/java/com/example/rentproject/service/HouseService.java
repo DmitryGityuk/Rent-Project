@@ -22,23 +22,17 @@ public class HouseService {
         if (houseFromDB != null) {
             return false;
         }
-        house.setHouseName(house.getHouseName());
-        house.setCity(house.getCity());
-        house.setCountry(house.getCountry());
-        house.setLocation(house.getCity() + ", " + house.getCountry());
-        house.setPrice(house.getPrice());
-        house.setRooms(house.getRooms());
-        house.setGuests(house.getGuests());
-        house.setDescription(house.getDescription());
-        house.setType(house.getType());
-        house.setUser(user);
-        house.setHouseIsReserved(false);
-        house.setMainPhoto(file);
+        additionHouseInfo(house, file, user);
         houseRepository.save(house);
         return true;
     }
 
     public void updateHouse(House house, String photo, User user) {
+        additionHouseInfo(house, photo, user);
+        houseRepository.save(house);
+    }
+
+    public void additionHouseInfo(House house, String photo, User user) {
         house.setHouseName(house.getHouseName());
         house.setCity(house.getCity());
         house.setCountry(house.getCountry());

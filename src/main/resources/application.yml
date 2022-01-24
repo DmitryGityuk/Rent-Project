@@ -1,4 +1,8 @@
-
+amazonProperties:
+  endpointUrl: s3.eu-north-1.amazonaws.com
+  accessKey: "your accessKey"
+  secretKey: "your secretKey"
+  bucketName: "your bucketName"
 
 spring:
   servlet:

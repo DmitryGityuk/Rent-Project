@@ -3,9 +3,7 @@ package com.example.rentproject.controller;
 import com.example.rentproject.models.House;
 import com.example.rentproject.models.RentalRecord;
 import com.example.rentproject.models.User;
-import com.example.rentproject.repository.HousePhotoRepository;
 import com.example.rentproject.repository.HouseRepository;
-import com.example.rentproject.repository.RentalRecordRepository;
 import com.example.rentproject.service.RentalRecordService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,15 +18,12 @@ import java.util.List;
 @Controller
 public class SearchController {
     private final HouseRepository houseRepository;
-    private final HousePhotoRepository housePhotoRepository;
     private final RentalRecordService recordService;
-    private final RentalRecordRepository recordRepository;
 
-    public SearchController(HouseRepository houseRepository, HousePhotoRepository housePhotoRepository, RentalRecordService recordService, RentalRecordRepository recordRepository) {
+    public SearchController(HouseRepository houseRepository, RentalRecordService recordService) {
         this.houseRepository = houseRepository;
-        this.housePhotoRepository = housePhotoRepository;
         this.recordService = recordService;
-        this.recordRepository = recordRepository;
+
     }
 
     @GetMapping("/search")
@@ -56,7 +51,8 @@ public class SearchController {
     }
 
     @PostMapping("/singleSearch/{id}")
-    public String addRental(@PathVariable("id") Long id, @AuthenticationPrincipal User user, RentalRecord record, House house, Model model) {
+    public String addRental(@PathVariable("id") Long id, @AuthenticationPrincipal User user, RentalRecord record, House house) {
+        houseRepository.findById(id).get();
         recordService.addNewRecord(record, user, house);
         return "redirect:/profile";
     }
